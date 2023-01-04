@@ -15,6 +15,12 @@ import com.example.myapplication.MainActivity4;
 import com.example.myapplication.MainActivity5;
 import com.example.myapplication.R;
 import com.example.myapplication.Session;
+import com.example.myapplication.added_wallet.MainActivity2_wallet;
+import com.example.myapplication.added_wallet.MainActivity3_wallet;
+import com.example.myapplication.added_wallet.MainActivity4_wallet;
+import com.example.myapplication.added_wallet.MainActivity5_wallet;
+import com.example.myapplication.added_wallet.MainActivity_wallet;
+import com.example.myapplication.ui.Utils.ManageWallet;
 import com.example.myapplication.ui.Utils.OrdersManage;
 import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
@@ -22,6 +28,7 @@ import com.example.myapplication.ui.Utils.database.SQLiteManager;
 public class LoginPage extends AppCompatActivity {
     private EditText emailText, passwordText;
     private OrdersManage ordersManage;
+    private ManageWallet manageWallet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,46 +45,78 @@ public class LoginPage extends AppCompatActivity {
         SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this);
         sqLiteManager.populateUserListArray();
         sqLiteManager.populateOrderListArray();
+        sqLiteManager.populateWalletArray();
     }
-
     public void EnterTheSystem(View view) {
         loadFromDBToMemory();
         String email1 = String.valueOf(emailText.getText());
         String password1 = String.valueOf(passwordText.getText());
         for (UsersManage note : UsersManage.UsersList)
         {
-            if((note.getEmail().equals(email1) && (note.getPassword().equals(password1)))){
+            if((note.getEmail().equals(email1) && (note.getPassword().equals(password1)))) {
+                for (int i = 0; i < ManageWallet.WalletList.size(); i++) {
+                    if (ManageWallet.WalletList.get(i).getUser_id() == note.getId()) {
+                        manageWallet = ManageWallet.WalletList.get(i);
+                    }
+                }
                 Intent Main;
-                if(note.getRole().equals("Customer")) {
-                    if (note.getActiveOrder() != -1) {
-                        for (int i = 0; i < OrdersManage.orderArrayList.size(); i++){
-                            if(OrdersManage.orderArrayList.get(i).getId() == note.getActiveOrder()){
-                                ordersManage = OrdersManage.orderArrayList.get(i);
+                if (manageWallet == null) {
+                    if (note.getRole().equals("Customer")) {
+                        if (note.getActiveOrder() != -1) {
+                            for (int i = 0; i < OrdersManage.orderArrayList.size(); i++) {
+                                if (OrdersManage.orderArrayList.get(i).getId() == note.getActiveOrder()) {
+                                    ordersManage = OrdersManage.orderArrayList.get(i);
+                                }
                             }
+                            if (ordersManage.getAccepted_user_id() != -1) {
+                                Main = new Intent(this, MainActivity5.class);
+                            } else {
+                                Main = new Intent(this, MainActivity2.class);
+                            }
+                        } else {
+                            Main = new Intent(this, MainActivity.class);
                         }
-                        if(ordersManage.getAccepted_user_id() != -1) {
-                            Main = new Intent(this, MainActivity5.class);
-                        }
-                        else {
-                            Main = new Intent(this, MainActivity2.class);
+
+
+                    } else {
+                        if (note.getActiveOrder() == -1) {
+                            Main = new Intent(this, MainActivity3.class);
+
+                        } else {
+                            Main = new Intent(this, MainActivity4.class);
+
                         }
                     }
-
-
-                    else {
-                        Main = new Intent(this, MainActivity.class);
-                    }
-
 
 
                 }else {
-                    if(note.getActiveOrder() == -1){
-                    Main = new Intent(this, MainActivity3.class);
+                    if (note.getRole().equals("Customer")) {
+                        if (note.getActiveOrder() != -1) {
+                            for (int i = 0; i < OrdersManage.orderArrayList.size(); i++) {
+                                if (OrdersManage.orderArrayList.get(i).getId() == note.getActiveOrder()) {
+                                    ordersManage = OrdersManage.orderArrayList.get(i);
+                                }
+                            }
+                            if (ordersManage.getAccepted_user_id() != -1) {
+                                Main = new Intent(this, MainActivity5_wallet.class);
+                            } else {
+                                Main = new Intent(this, MainActivity2_wallet.class);
+                            }
+                        } else {
+                            Main = new Intent(this, MainActivity_wallet.class);
+                        }
 
-                }else{
-                    Main = new Intent(this, MainActivity4.class);
 
+                    } else {
+                        if (note.getActiveOrder() == -1) {
+                            Main = new Intent(this, MainActivity3_wallet.class);
+
+                        } else {
+                            Main = new Intent(this, MainActivity4_wallet.class);
+
+                        }
                     }
+
                 }
                 ((Session) this.getApplication()).setSomeVariable(note.getId());
                 finish();
@@ -86,6 +125,7 @@ public class LoginPage extends AppCompatActivity {
         }
 
     }
+
     public void ForgotPassword(View view) {
         Intent NewPassword = new Intent(this, ForgotPassword.class);
         finish();

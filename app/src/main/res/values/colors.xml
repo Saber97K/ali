@@ -8,4 +8,11 @@
     <color name="red">#F00</color>
     <color name="gr">#34b1eb</color>
     <color name="AlmostDark">#333333</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="dark_pink">#E5CAB5</color>
+    <color name="bright_pink">#FFCC99</color>
+    <color name="grey">    #666666</color>
+    <color name="light_grey">#CCCCCC</color>
 </resources>

@@ -32,7 +32,7 @@ public class OrderFoundPartner extends Fragment {
     private OrdersManage ordersManage;
     private int currentUser;
     private SQLiteManager sqLiteManager;
-    private UsersManage usersManage;
+    private UsersManage usersManage, acceptedUserManage;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -56,6 +56,11 @@ public class OrderFoundPartner extends Fragment {
                 usersManage = UsersManage.UsersList.get(i);
             }
         }
+        for (int i = 0 ; i < UsersManage.UsersList.size(); i++){
+            if(UsersManage.UsersList.get(i).getId() == ordersManage.getAccepted_user_id()){
+                acceptedUserManage = UsersManage.UsersList.get(i);
+            }
+        }
 
         Button btnOut = (Button) root.findViewById(R.id.buttonCompleteOrder);
         btnOut.setOnClickListener(new View.OnClickListener() {
@@ -64,8 +69,11 @@ public class OrderFoundPartner extends Fragment {
                                           ordersManage.setStatus(1);
                                           sqLiteManager.UpdateOrder(ordersManage);
                                           usersManage.setActiveOrder(-1);
+                                          acceptedUserManage.setActiveOrder(-1);
                                           sqLiteManager.UpdateUser(usersManage);
-                                          Intent intent = new Intent(getActivity(), MainActivity.class);
+                                          sqLiteManager.UpdateUser(acceptedUserManage);
+                                          Intent intent = new Intent(getActivity(), AfterCompleteCustomer.class);
+                                          intent.putExtra("id" , acceptedUserManage.getId());
                                           getActivity().finish();
                                           startActivity(intent);
                                       }
@@ -77,11 +85,11 @@ public class OrderFoundPartner extends Fragment {
                                       @Override
                                       public void onClick(View view) {
                                           ordersManage.setAccepted_user_id(-1);
-                                          ordersManage.setStatus(2);
                                           sqLiteManager.UpdateOrder(ordersManage);
-                                          usersManage.setActiveOrder(-1);
-                                          sqLiteManager.UpdateUser(usersManage);
-                                          Intent intent = new Intent(getActivity(), MainActivity.class);
+                                          acceptedUserManage.setActiveOrder(-1);
+                                          sqLiteManager.UpdateUser(acceptedUserManage);
+                                          Intent intent = new Intent(getActivity(), AfterCompleteCustomer.class);
+                                          intent.putExtra("id" , acceptedUserManage.getId());
                                           getActivity().finish();
                                           startActivity(intent);
                                       }

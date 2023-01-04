@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.myapplication.ui.Utils.CategoryManage;
+import com.example.myapplication.ui.Utils.ManageTopUps;
+import com.example.myapplication.ui.Utils.ManageWallet;
 import com.example.myapplication.ui.Utils.OrdersManage;
 import com.example.myapplication.ui.Utils.RatingManage;
 import com.example.myapplication.ui.Utils.UsersManage;
@@ -71,6 +73,23 @@ public class SQLiteManager extends SQLiteOpenHelper
     private static final String CATEGORY_NAME = "name";
 
 
+    private static final String WALLET_TABLE_NAME = "wallet";
+
+    private static final String WALLET_ID = "id";
+    private static final String WALLET_BANK_ACCOUNT = "bank";
+    private static final String WALLET_USER_ID = "user_id";
+    private static final String WALLET_BALANCE = "balance";
+    private static final String WALLET_PASSWORD = "password";
+
+
+    private static final String TopUp_TABLE_NAME = "topUps";
+
+    private static final String TOPUP_ID = "id";
+    private static final String TOPUP_WALLET_ID = "wallet_id";
+    private static final String TOPUPS_BALANCE = "balance";
+    private static final String TOPUPS_DATE = "date";
+
+
 
     @SuppressLint("SimpleDateFormat")
     private static final DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
@@ -130,6 +149,24 @@ public class SQLiteManager extends SQLiteOpenHelper
                 .append(" INTEGER PRIMARY KEY AUTOINCREMENT, ").append(CATEGORY_NAME).append(" TEXT) ");
 
         sqLiteDatabase.execSQL(sql3.toString());
+
+
+        StringBuilder sql4;
+        sql4 = new StringBuilder()
+                .append("CREATE TABLE ").append(WALLET_TABLE_NAME).append("(").append(WALLET_ID)
+                .append(" INTEGER PRIMARY KEY AUTOINCREMENT, ").append(WALLET_USER_ID).append(" INT, ")
+                .append(WALLET_BANK_ACCOUNT).append(" TEXT, ").append(WALLET_BALANCE).append(" REAL, ")
+                .append(WALLET_PASSWORD).append(" TEXT) ");
+
+        sqLiteDatabase.execSQL(sql4.toString());
+
+        StringBuilder sql5;
+        sql5 = new StringBuilder()
+                .append("CREATE TABLE ").append(TopUp_TABLE_NAME).append("(").append(TOPUP_ID)
+                .append(" INTEGER PRIMARY KEY AUTOINCREMENT, ").append(TOPUP_WALLET_ID).append(" INT, ")
+                .append(TOPUPS_BALANCE).append(" REAL, ").append(TOPUPS_DATE).append(" TEXT) ");
+
+        sqLiteDatabase.execSQL(sql5.toString());
     }
 
     @Override
@@ -196,6 +233,35 @@ public class SQLiteManager extends SQLiteOpenHelper
         contentValues.put(CATEGORY_NAME, note.getText());
 
         sqLiteDatabase.insert(CATEGORY_TABLE_NAME, null, contentValues);
+    }
+
+    public void addWallet(ManageWallet note)
+    {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(WALLET_ID, note.getId());
+        contentValues.put(WALLET_USER_ID, note.getUser_id());
+        contentValues.put(WALLET_BANK_ACCOUNT, note.getBankAccountNumber());
+        contentValues.put(WALLET_BALANCE, note.getBalance());
+        contentValues.put(WALLET_PASSWORD, note.getPassword());
+
+
+        sqLiteDatabase.insert(WALLET_TABLE_NAME, null, contentValues);
+    }
+
+    public void addTopUPS(ManageTopUps note)
+    {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TOPUP_ID, note.getId());
+        contentValues.put(TOPUP_WALLET_ID, note.getWallet_id());
+        contentValues.put(TOPUPS_BALANCE, note.getValue());
+        contentValues.put(TOPUPS_DATE, note.getString());
+
+
+        sqLiteDatabase.insert(TopUp_TABLE_NAME, null, contentValues);
     }
 
     public void populateUserListArray()
@@ -288,6 +354,48 @@ public class SQLiteManager extends SQLiteOpenHelper
             }
         }
     }
+    public void populateWalletArray()
+    {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + WALLET_TABLE_NAME, null))
+        {
+            if(result.getCount() != 0)
+            {
+                while (result.moveToNext())
+                {
+                    int id = result.getInt(0);
+                    int user_id = result.getInt(1);
+                    String bank = result.getString(2);
+                    float balance = result.getFloat(3);
+                    String password = result.getString(4);
+                    ManageWallet note = new ManageWallet(id,bank, user_id,balance ,password);
+                    ManageWallet.WalletList.add(note);
+                }
+            }
+        }
+    }
+
+    public void populateTopUps()
+    {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + TopUp_TABLE_NAME, null))
+        {
+            if(result.getCount() != 0)
+            {
+                while (result.moveToNext())
+                {
+                    int id = result.getInt(0);
+                    int wallet_id = result.getInt(1);
+                    float balance = result.getFloat(2);
+                    String date = result.getString(3);
+                    ManageTopUps note = new ManageTopUps(id,wallet_id, balance , date);
+                    ManageTopUps.TopUpsList.add(note);
+                }
+            }
+        }
+    }
 
     public void deleteUser(int id)
     {
@@ -337,6 +445,18 @@ public class SQLiteManager extends SQLiteOpenHelper
         contentValues.put(ORDERS_STATUS, note.getStatus());
 
         sqLiteDatabase.update(ORDERS_TABLE_NAME, contentValues, ORDERS_ID_FIELD + " =? ", new String[]{String.valueOf(note.getId())});
+    }
+
+    public void UpdateWallet(ManageWallet note){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(WALLET_ID, note.getId());
+        contentValues.put(WALLET_USER_ID, note.getUser_id());
+        contentValues.put(WALLET_BANK_ACCOUNT, note.getBankAccountNumber());
+        contentValues.put(WALLET_BALANCE, note.getBalance());
+        contentValues.put(WALLET_PASSWORD, note.getPassword());
+
+        sqLiteDatabase.update(WALLET_TABLE_NAME, contentValues, WALLET_ID + " =? ", new String[]{String.valueOf(note.getId())});
     }
 }
 

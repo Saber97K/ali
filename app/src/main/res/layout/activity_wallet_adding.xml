@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.wallet.WalletAddingActivity"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="150dp"
+        android:background="@color/white"
+        android:id="@+id/fragment_container_view_tag1"
+        >
+
+
+        <TextView
+            android:id="@+id/bankInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bankInfo"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="60dp"/>
+
+        <EditText
+            android:id="@+id/editTextBankAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:hint="Bank Account Number"
+            />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Password"
+            android:textSize="20sp"
+            android:inputType="textPersonName"
+            android:layout_marginBottom="60dp"/>
+
+        <Button
+            android:id="@+id/confirmAddBankAcount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm"
+            android:textAllCaps="false"
+            android:textSize="25sp"
+            android:enabled="true"
+            android:textColor="@color/grey"
+            android:background="@drawable/shape"
+            android:onClick="ConfirmBank"/>
+
+
+
+
+
+    </LinearLayout>

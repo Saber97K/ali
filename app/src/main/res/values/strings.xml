@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">My Application</string>
     <string name="title_order">Order</string>
     <string name="title_record">Record</string>
     <string name="title_wallet">Wallet</string>
@@ -12,4 +11,26 @@
     <string name="title_created_order">createdOrder</string>
     <string name="title_worker_order">worker_order</string>
     <string name="title_found_partner">Order</string>
+    <string name="app_name">DeSTiny</string>
+    <string name="balance">Balance</string>
+    <string name="topup">Top up</string>
+    <string name="done">Done</string>
+    <string name="confirm">Confirm</string>
+    <string name="add">+</string>
+    <string name="detail">></string>
+    <string name="bank">&#160;Bank Account</string>
+    <string name="minimumTopup">The minimum amount is 10</string>
+    <string name="addBankAcount">Link New Bank Account</string>
+    <string name="bankInfo">Bank Account Information</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_main6">MainActivity6</string>
+    <string name="title_activity_top_up_process">TopUpProcess</string>
 </resources>
