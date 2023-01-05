@@ -28,7 +28,7 @@ public class Success extends AppCompatActivity {
             caseCustomer = bundle.getString("text");
 
         }
-        Log.d("TAG", caseCustomer);
+
 }
 
     public void SuccessfullyTopUp(View view) {

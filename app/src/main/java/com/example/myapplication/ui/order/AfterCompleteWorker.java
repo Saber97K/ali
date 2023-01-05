@@ -21,6 +21,7 @@ import com.example.myapplication.ui.Utils.AdapterUser;
 import com.example.myapplication.ui.Utils.CategoryAdapter;
 import com.example.myapplication.ui.Utils.CategoryManage;
 import com.example.myapplication.ui.Utils.OrdersManage;
+import com.example.myapplication.ui.Utils.RatingManage;
 import com.example.myapplication.ui.Utils.ReviewPage;
 import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
@@ -85,6 +86,8 @@ public class AfterCompleteWorker extends Fragment {
 
         UsersManage.UsersList.clear();
         UsersManage.UsersList.add(acceptedUsersManage);
+        RatingManage.ratingsArrayList.clear();
+        sqLiteManager.populateRatingListArray();
         setAcceptedUserAdapter();
         return root;
     }

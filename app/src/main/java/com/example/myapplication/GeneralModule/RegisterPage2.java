@@ -36,10 +36,6 @@ public class RegisterPage2 extends AppCompatActivity {
         password = bundle.getString("password");
         initWidgets();
         date = getTodaysDate();
-
-        loadFromDBToMemory();
-
-
     }
 
     private void initWidgets() {
@@ -51,24 +47,21 @@ public class RegisterPage2 extends AppCompatActivity {
         initDatePicker();
 
     }
-    private void loadFromDBToMemory() {
-        SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this);
-        sqLiteManager.populateUserListArray();
-    }
+
 
     public void ContinueRegister(View view) {
-        Intent intent = new Intent(this, LoginPage.class);
-        int id = UsersManage.UsersList.size();
-
+        Intent intent = new Intent(this, UploadImage.class);
         address = String.valueOf(addressEdit.getText());
         phone = String.valueOf(phoneEdit.getText());
         gender = String.valueOf(GenderEdit.getText());
-
-        SQLiteManager sqLiteUsers = SQLiteManager.instanceOfDatabase(this);
-
-        UsersManage user = new UsersManage(id ,role,email,password,date,name,address,gender,phone,-1);
-        UsersManage.UsersList.add(user);
-        sqLiteUsers.addUserToDatabase(user);
+        intent.putExtra("address" , address);
+        intent.putExtra("phone" ,phone);
+        intent.putExtra("gender",gender);
+        intent.putExtra("date",date);
+        intent.putExtra( "role" , role);
+        intent.putExtra( "name" , name);
+        intent.putExtra( "email" , email);
+        intent.putExtra( "password" , password);
         finish();
         startActivity(intent);
     }

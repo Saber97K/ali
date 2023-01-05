@@ -1,5 +1,7 @@
 package com.example.myapplication.ui.Utils;
 
+import android.graphics.Bitmap;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -20,8 +22,9 @@ public class UsersManage {
     private String gender;
     private String phoneNumber;
     private int activeOrder;
+    private Bitmap image;
 
-    public UsersManage(int id,String role, String email, String password, String birthday, String name, String location, String gender, String phoneNumber,int active) {
+    public UsersManage(int id, String role, String email, String password, String birthday, String name, String location, String gender, String phoneNumber, int activeOrder, Bitmap image) {
         this.id = id;
         this.role = role;
         this.email = email;
@@ -31,7 +34,16 @@ public class UsersManage {
         this.location = location;
         this.gender = gender;
         this.phoneNumber = phoneNumber;
-        this.activeOrder = active;
+        this.activeOrder = activeOrder;
+        this.image = image;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
     }
 
     public int getActiveOrder() {

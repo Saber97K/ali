@@ -1,7 +1,5 @@
 package com.example.myapplication.ui.profile;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,16 +20,18 @@ import com.example.myapplication.databinding.FragmentProfileBinding;
 import com.example.myapplication.ui.Utils.RatingManage;
 import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
-import com.example.myapplication.ui.order.OrderCreate;
 
-import java.util.Calendar;
+import java.text.DecimalFormat;
 
 public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
     private TextView dateEdit,phoneEdit,locEdit, userEdit, userRating;
-    private int currentUser , ratingValue;
+    private ImageView imageView;
+    private int currentUser ;
+    private  float ratingValue;
     private UsersManage userProfile;
+    private static final DecimalFormat df = new DecimalFormat("0.0");
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -48,7 +48,8 @@ public class ProfileFragment extends Fragment {
         dateEdit.setText(userProfile.getBirthday());
         phoneEdit.setText(userProfile.getPhoneNumber());
         locEdit.setText(userProfile.getLocation());
-        userRating.setText(countRating() + "");
+        userRating.setText(countRating());
+        imageView.setImageBitmap(userProfile.getImage());
         Log.d("TAG", String.valueOf(currentUser));
 
 
@@ -82,7 +83,7 @@ public class ProfileFragment extends Fragment {
         return root;
     }
 
-    public int countRating() {
+    public String countRating() {
         ratingValue = 0;
         int counts = 0;
         for (int i =0 ; i < RatingManage.ratingsArrayList.size(); i++){
@@ -92,10 +93,11 @@ public class ProfileFragment extends Fragment {
             }
         }
         if(counts != 0) {
-             return ratingValue = ratingValue / counts;
+            ratingValue = ratingValue / counts;
+             return df.format(ratingValue);
         }else
         {
-            return ratingValue;
+            return df.format(ratingValue);
         }
 
     }
@@ -108,6 +110,7 @@ public class ProfileFragment extends Fragment {
         }
     }
     public void initWidgets(){
+        imageView = binding.ProfilePic;
         userRating = binding.RatingEDIT;
         userEdit = binding.Name;
         dateEdit =binding.DOB;
