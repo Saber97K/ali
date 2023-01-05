@@ -4,7 +4,7 @@
     <item
         android:id="@+id/navigation_worker"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_worker_order" />
+        android:title="@string/title_order" />
 
     <item
         android:id="@+id/navigation_record"

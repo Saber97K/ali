@@ -117,20 +117,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity5"
-            android:exported="false" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MainActivity4"
-            android:exported="false" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".ui.order.OrderAccepted"
             android:exported="false" >
             <meta-data
@@ -151,13 +137,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".GeneralModule.RegisterPage2"
             android:exported="false" >

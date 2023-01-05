@@ -5,21 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.myapplication.GeneralModule.MainLobby;
-import com.example.myapplication.MainActivity;
-import com.example.myapplication.MainActivity2;
-import com.example.myapplication.MainActivity3;
 import com.example.myapplication.R;
 import com.example.myapplication.Session;
 import com.example.myapplication.databinding.FoundPartnerBinding;
-import com.example.myapplication.ui.Utils.CategoryAdapter;
 import com.example.myapplication.ui.Utils.CategoryManage;
 import com.example.myapplication.ui.Utils.ManageWallet;
 import com.example.myapplication.ui.Utils.OrdersManage;

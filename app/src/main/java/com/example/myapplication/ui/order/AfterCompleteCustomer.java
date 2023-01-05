@@ -1,32 +1,19 @@
 package com.example.myapplication.ui.order;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatRadioButton;
 
-import com.example.myapplication.MainActivity;
-import com.example.myapplication.MainActivity2;
 import com.example.myapplication.R;
 import com.example.myapplication.Session;
 import com.example.myapplication.added_wallet.MainActivity3_wallet;
 import com.example.myapplication.added_wallet.MainActivity_wallet;
 import com.example.myapplication.ui.Utils.AdapterUser;
-import com.example.myapplication.ui.Utils.CategoryManage;
-import com.example.myapplication.ui.Utils.OrdersManage;
 import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
-
-import java.util.Calendar;
 
 public class AfterCompleteCustomer extends AppCompatActivity {
 

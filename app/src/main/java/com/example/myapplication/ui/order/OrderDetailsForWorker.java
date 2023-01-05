@@ -1,38 +1,22 @@
 package com.example.myapplication.ui.order;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatRadioButton;
 
 import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.myapplication.MainActivity3;
-import com.example.myapplication.MainActivity4;
 import com.example.myapplication.R;
 import com.example.myapplication.Session;
 import com.example.myapplication.added_wallet.MainActivity4_wallet;
-import com.example.myapplication.added_wallet.MainActivity7_wallet;
 import com.example.myapplication.added_wallet.MainActivity8_wallet;
-import com.example.myapplication.ui.Utils.AdapterOrder;
-import com.example.myapplication.ui.Utils.CategoryManage;
 import com.example.myapplication.ui.Utils.ManageWallet;
-import com.example.myapplication.ui.Utils.OrdersManage;
 import com.example.myapplication.ui.Utils.OrdersManage;
 import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
-
-import java.util.Calendar;
 
 public class OrderDetailsForWorker extends AppCompatActivity {
     private TextView typeTExtView, DateTextView, priceTextView , descTextView;

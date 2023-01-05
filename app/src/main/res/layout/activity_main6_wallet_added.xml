@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu"
+        app:menu="@menu/default_menu"
         app:labelVisibilityMode="labeled"/>
 
     <fragment
@@ -28,6 +28,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/active_order3" />
+        app:navGraph="@navigation/customer_with_wallet_no_money" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

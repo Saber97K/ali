@@ -7,8 +7,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.myapplication.MainActivity3;
-import com.example.myapplication.MainActivity4;
 import com.example.myapplication.R;
 import com.example.myapplication.Session;
 import com.example.myapplication.added_wallet.MainActivity3_wallet;

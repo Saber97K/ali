@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/menu4"
+        app:menu="@menu/worker_accepted_order_menu"
         app:labelVisibilityMode="labeled"/>
 
     <fragment
@@ -28,6 +28,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/active_order_worker2" />
+        app:navGraph="@navigation/worker_accepted_order_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

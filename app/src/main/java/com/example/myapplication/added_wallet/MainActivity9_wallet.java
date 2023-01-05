@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.added_wallet;
 
 import android.os.Bundle;
 
@@ -7,18 +7,18 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.myapplication.databinding.ActivityMain3Binding;
-import com.example.myapplication.databinding.ActivityMain4Binding;
+import com.example.myapplication.R;
+import com.example.myapplication.databinding.ActivityMain9WalletAddedBinding;
 
-public class MainActivity4 extends AppCompatActivity {
+public class MainActivity9_wallet extends AppCompatActivity {
 
 
-    private ActivityMain4Binding binding;
+    private ActivityMain9WalletAddedBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMain4Binding.inflate(getLayoutInflater());
+        binding = ActivityMain9WalletAddedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);

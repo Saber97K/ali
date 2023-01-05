@@ -1,18 +1,14 @@
 package com.example.myapplication.GeneralModule;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.myapplication.MainActivity;
-import com.example.myapplication.MainActivity2;
 import com.example.myapplication.MainActivity3;
-import com.example.myapplication.MainActivity4;
-import com.example.myapplication.MainActivity5;
 import com.example.myapplication.R;
 import com.example.myapplication.Session;
 import com.example.myapplication.added_wallet.MainActivity2_wallet;
@@ -62,34 +58,14 @@ public class LoginPage extends AppCompatActivity {
                 Intent Main;
                 if (manageWallet == null) {
                     if (note.getRole().equals("Customer")) {
-                        if (note.getActiveOrder() != -1) {
-                            for (int i = 0; i < OrdersManage.orderArrayList.size(); i++) {
-                                if (OrdersManage.orderArrayList.get(i).getId() == note.getActiveOrder()) {
-                                    ordersManage = OrdersManage.orderArrayList.get(i);
-                                }
-                            }
-                            if (ordersManage.getAccepted_user_id() != -1) {
-                                Main = new Intent(this, MainActivity5.class);
-                            } else {
-                                Main = new Intent(this, MainActivity2.class);
-                            }
-                        } else {
                             Main = new Intent(this, MainActivity.class);
-                        }
-
-
-                    } else {
-                        if (note.getActiveOrder() == -1) {
-                            Main = new Intent(this, MainActivity3.class);
-
                         } else {
-                            Main = new Intent(this, MainActivity4.class);
-
+                            Main = new Intent(this, MainActivity3.class);
                         }
                     }
 
 
-                }else {
+                else {
                     if (note.getRole().equals("Customer")) {
                         if (note.getActiveOrder() != -1) {
                             for (int i = 0; i < OrdersManage.orderArrayList.size(); i++) {
