@@ -16,6 +16,7 @@ import com.example.myapplication.added_wallet.MainActivity8_wallet;
 import com.example.myapplication.added_wallet.MainActivity9_wallet;
 import com.example.myapplication.ui.Utils.ManageTopUps;
 import com.example.myapplication.ui.Utils.ManageWallet;
+import com.example.myapplication.ui.Utils.Success;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
 
 import java.util.Calendar;
@@ -84,6 +85,8 @@ public class WithdrawProcess extends AppCompatActivity {
             manageWallet.setBalance(manageWallet.getBalance() - value);
             sqLiteManager.UpdateWallet(manageWallet);
             finish();
+            Intent intent = new Intent(this, Success.class);
+            startActivity(intent);
         }else{
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Message");

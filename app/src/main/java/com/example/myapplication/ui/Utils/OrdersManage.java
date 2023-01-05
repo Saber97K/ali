@@ -1,5 +1,7 @@
 package com.example.myapplication.ui.Utils;
 
+import com.example.myapplication.Session;
+
 import java.util.ArrayList;
 
 public class OrdersManage {
@@ -52,12 +54,35 @@ public class OrdersManage {
             return Ongoing;
         }
 
+    public static ArrayList<OrdersManage> OngoingOrderAvailable()
+    {
+        ArrayList<OrdersManage> Ongoing = new ArrayList<>();
+        for(OrdersManage order : orderArrayList)
+        {
+            if(order.getStatus() == 0 && order.getAccepted_user_id() == -1)
+                Ongoing.add(order);
+        }
+
+        return Ongoing;
+    }
+
     public static ArrayList<OrdersManage> CompletedOrder()
     {
         ArrayList<OrdersManage> Completed = new ArrayList<>();
         for(OrdersManage order : orderArrayList)
         {
             if(order.getStatus() == 1)
+                Completed.add(order);
+        }
+
+        return Completed;
+    }
+    public static ArrayList<OrdersManage> CompletedOrderByThisPerson(int thisUser)
+    {
+        ArrayList<OrdersManage> Completed = new ArrayList<>();
+        for(OrdersManage order : orderArrayList)
+        {
+            if(order.getStatus() == 1 && order.getAccepted_user_id() == thisUser)
                 Completed.add(order);
         }
 

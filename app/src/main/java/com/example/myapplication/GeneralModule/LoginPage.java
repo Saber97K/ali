@@ -2,6 +2,7 @@ package com.example.myapplication.GeneralModule;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -11,11 +12,13 @@ import com.example.myapplication.MainActivity;
 import com.example.myapplication.MainActivity3;
 import com.example.myapplication.R;
 import com.example.myapplication.Session;
+import com.example.myapplication.added_wallet.MainActivity10_wallet;
 import com.example.myapplication.added_wallet.MainActivity2_wallet;
 import com.example.myapplication.added_wallet.MainActivity3_wallet;
 import com.example.myapplication.added_wallet.MainActivity4_wallet;
 import com.example.myapplication.added_wallet.MainActivity5_wallet;
 import com.example.myapplication.added_wallet.MainActivity_wallet;
+import com.example.myapplication.ui.Utils.ManageVisited;
 import com.example.myapplication.ui.Utils.ManageWallet;
 import com.example.myapplication.ui.Utils.OrdersManage;
 import com.example.myapplication.ui.Utils.UsersManage;
@@ -25,11 +28,14 @@ public class LoginPage extends AppCompatActivity {
     private EditText emailText, passwordText;
     private OrdersManage ordersManage;
     private ManageWallet manageWallet;
+    private ManageVisited manageVisited;
+    private SQLiteManager sqLiteManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
+
         initWidgets();
     }
 
@@ -38,10 +44,11 @@ public class LoginPage extends AppCompatActivity {
         passwordText = findViewById(R.id.editPassword);
     }
     private void loadFromDBToMemory() {
-        SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this);
+        sqLiteManager = SQLiteManager.instanceOfDatabase(this);
         sqLiteManager.populateUserListArray();
         sqLiteManager.populateOrderListArray();
         sqLiteManager.populateWalletArray();
+        sqLiteManager.populateVisitsListArray();
     }
     public void EnterTheSystem(View view) {
         loadFromDBToMemory();
@@ -53,6 +60,12 @@ public class LoginPage extends AppCompatActivity {
                 for (int i = 0; i < ManageWallet.WalletList.size(); i++) {
                     if (ManageWallet.WalletList.get(i).getUser_id() == note.getId()) {
                         manageWallet = ManageWallet.WalletList.get(i);
+                    }
+                }
+                for (int i = 0; i < ManageVisited.VisitsList.size(); i++) {
+                    if (ManageVisited.VisitsList.get(i).getUser_id() == note.getId() &&
+                    ManageVisited.VisitsList.get(i).getStatus() == 0) {
+                        manageVisited = ManageVisited.VisitsList.get(i);
                     }
                 }
                 Intent Main;
@@ -85,7 +98,17 @@ public class LoginPage extends AppCompatActivity {
 
                     } else {
                         if (note.getActiveOrder() == -1) {
-                            Main = new Intent(this, MainActivity3_wallet.class);
+
+                            if(manageVisited == null) {
+                                Main = new Intent(this, MainActivity3_wallet.class);
+                            }
+                            else{
+                                Main = new Intent(this, MainActivity10_wallet.class);
+                                manageVisited.setStatus(1);
+                                sqLiteManager.UpdateVisit(manageVisited);
+
+                            }
+
 
                         } else {
                             Main = new Intent(this, MainActivity4_wallet.class);

@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.myapplication.ui.Utils.CategoryManage;
 import com.example.myapplication.ui.Utils.ManageTopUps;
+import com.example.myapplication.ui.Utils.ManageVisited;
 import com.example.myapplication.ui.Utils.ManageWallet;
 import com.example.myapplication.ui.Utils.OrdersManage;
 import com.example.myapplication.ui.Utils.RatingManage;
@@ -61,10 +62,11 @@ public class SQLiteManager extends SQLiteOpenHelper
 
     private static final String RATING_TABLE_NAME = "ratings";
 
-    private static final String RATING_ID = "user_id";
+    private static final String RATING_ID = "id";
     private static final String RATING_TO = "accept_user";
     private static final String RATING_FROM = "give_user";
     private static final String RATING_VALUE = "rating";
+    private static final String RATING_DESCRIPTION = "description";
 
 
     private static final String CATEGORY_TABLE_NAME = "categories";
@@ -88,6 +90,14 @@ public class SQLiteManager extends SQLiteOpenHelper
     private static final String TOPUP_WALLET_ID = "wallet_id";
     private static final String TOPUPS_BALANCE = "balance";
     private static final String TOPUPS_DATE = "date";
+
+
+    private static final String VISITED_TABLE_NAME = "visits";
+
+    private static final String VISITED_ID = "id";
+    private static final String VISITED_USER = "user_id";
+    private static final String VISITED_ORDER = "order_id";
+    private static final String VISITED_STATUS = "status";
 
 
 
@@ -138,7 +148,8 @@ public class SQLiteManager extends SQLiteOpenHelper
         sql2 = new StringBuilder()
                 .append("CREATE TABLE ").append(RATING_TABLE_NAME).append("(").append(RATING_ID)
                 .append(" INTEGER PRIMARY KEY AUTOINCREMENT, ").append(RATING_TO).append(" INT, ")
-                .append(RATING_FROM).append(" INT, ").append(RATING_VALUE).append(" INT) ");
+                .append(RATING_FROM).append(" INT, ").append(RATING_VALUE).append(" INT, ")
+                .append(RATING_DESCRIPTION).append(" TEXT) ");
 
         sqLiteDatabase.execSQL(sql2.toString());
 
@@ -167,6 +178,14 @@ public class SQLiteManager extends SQLiteOpenHelper
                 .append(TOPUPS_BALANCE).append(" REAL, ").append(TOPUPS_DATE).append(" TEXT) ");
 
         sqLiteDatabase.execSQL(sql5.toString());
+
+        StringBuilder sql6;
+        sql6 = new StringBuilder()
+                .append("CREATE TABLE ").append(VISITED_TABLE_NAME).append("(").append(VISITED_ID)
+                .append(" INTEGER PRIMARY KEY AUTOINCREMENT, ").append(VISITED_USER).append(" INT, ")
+                .append(VISITED_ORDER).append(" INT, ").append(VISITED_STATUS).append(" INT) ");
+
+        sqLiteDatabase.execSQL(sql6.toString());
     }
 
     @Override
@@ -220,6 +239,7 @@ public class SQLiteManager extends SQLiteOpenHelper
         contentValues.put(RATING_TO, note.getTo_user());
         contentValues.put(RATING_FROM, note.getFrom_user());
         contentValues.put(RATING_VALUE, note.getValue());
+        contentValues.put(RATING_DESCRIPTION, note.getDesc());
 
         sqLiteDatabase.insert(RATING_TABLE_NAME, null, contentValues);
     }
@@ -262,6 +282,20 @@ public class SQLiteManager extends SQLiteOpenHelper
 
 
         sqLiteDatabase.insert(TopUp_TABLE_NAME, null, contentValues);
+    }
+
+    public void addVisits(ManageVisited note)
+    {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(VISITED_ID, note.getId());
+        contentValues.put(VISITED_USER, note.getUser_id());
+        contentValues.put(VISITED_ORDER, note.getOrder_id());
+        contentValues.put(VISITED_STATUS, note.getStatus());
+
+
+        sqLiteDatabase.insert(VISITED_TABLE_NAME, null, contentValues);
     }
 
     public void populateUserListArray()
@@ -330,7 +364,8 @@ public class SQLiteManager extends SQLiteOpenHelper
                     int to_user = result.getInt(1);
                     int from_user  = result.getInt(2);
                     int value = result.getInt(3);
-                    RatingManage note = new RatingManage(id,to_user,from_user,value);
+                    String desc = result.getString(4);
+                    RatingManage note = new RatingManage(id,to_user,from_user,value,desc);
                     RatingManage.ratingsArrayList.add(note);
                 }
             }
@@ -396,6 +431,26 @@ public class SQLiteManager extends SQLiteOpenHelper
             }
         }
     }
+    public void populateVisitsListArray()
+    {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + VISITED_TABLE_NAME, null))
+        {
+            if(result.getCount() != 0)
+            {
+                while (result.moveToNext())
+                {
+                    int id = result.getInt(0);
+                    int user_id = result.getInt(1);
+                    int order_id = result.getInt(2);
+                    int status = result.getInt(3);
+                    ManageVisited note = new ManageVisited(id,user_id,order_id,status);
+                    ManageVisited.VisitsList.add(note);
+                }
+            }
+        }
+    }
 
     public void deleteUser(int id)
     {
@@ -457,6 +512,18 @@ public class SQLiteManager extends SQLiteOpenHelper
         contentValues.put(WALLET_PASSWORD, note.getPassword());
 
         sqLiteDatabase.update(WALLET_TABLE_NAME, contentValues, WALLET_ID + " =? ", new String[]{String.valueOf(note.getId())});
+    }
+
+    public void UpdateVisit(ManageVisited note){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(VISITED_ID, note.getId());
+        contentValues.put(VISITED_USER, note.getUser_id());
+        contentValues.put(VISITED_ORDER, note.getOrder_id());
+        contentValues.put(VISITED_STATUS, note.getStatus());
+
+        sqLiteDatabase.update(VISITED_TABLE_NAME, contentValues, VISITED_ID + " =? ", new String[]{String.valueOf(note.getId())});
     }
 }
 

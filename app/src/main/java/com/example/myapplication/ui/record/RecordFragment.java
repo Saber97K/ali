@@ -14,6 +14,7 @@ import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
+import com.example.myapplication.Session;
 import com.example.myapplication.databinding.FragmentRecordBinding;
 import com.example.myapplication.ui.Utils.AdapterOrder;
 import com.example.myapplication.ui.Utils.OrdersManage;
@@ -25,7 +26,7 @@ public class RecordFragment extends Fragment {
     private ListView noteListView;
     private AppCompatRadioButton ongoingButton, completedButton, cancelledButton;
     private View root;
-    private int status;
+    private int choice = 0;
 
 
 
@@ -37,7 +38,9 @@ public class RecordFragment extends Fragment {
         OrdersManage.orderArrayList.clear();
         noteListView = binding.orderListView;
         loadFromDBToMemory();
-        setOrderOngoingAdapter();
+        if(choice == 0) {
+            setOrderOngoingAdapter();
+        }
 
 
             AppCompatRadioButton btn1 = (AppCompatRadioButton) root.findViewById(R.id.ongoingRadio);
@@ -45,6 +48,7 @@ public class RecordFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                         setOrderOngoingAdapter();
+                    choice = 0;
                     }
             });
 
@@ -53,6 +57,7 @@ public class RecordFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     setOrderCompletedAdapter();
+                    choice = 1;
                 }
             });
 
@@ -61,6 +66,7 @@ public class RecordFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     setOrderCancelledAdapter();
+                   choice = 2 ;
                 }
             });
 
@@ -111,7 +117,15 @@ public class RecordFragment extends Fragment {
     public void onResume()
     {
         super.onResume();
-        setOrderOngoingAdapter();
+        if(choice == 0){
+            setOrderOngoingAdapter();
+        }else if(choice == 1){
+            setOrderCompletedAdapter();
+        }
+        else {
+            setOrderCancelledAdapter();
+        }
+
     }
     @Override
     public void onDestroyView() {

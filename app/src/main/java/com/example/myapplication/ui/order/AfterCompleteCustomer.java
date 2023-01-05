@@ -12,6 +12,7 @@ import com.example.myapplication.Session;
 import com.example.myapplication.added_wallet.MainActivity3_wallet;
 import com.example.myapplication.added_wallet.MainActivity_wallet;
 import com.example.myapplication.ui.Utils.AdapterUser;
+import com.example.myapplication.ui.Utils.ReviewPage;
 import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
 
@@ -50,13 +51,15 @@ public class AfterCompleteCustomer extends AppCompatActivity {
 
 
     public void ReviewButton(View view) {
-        Intent intent = new Intent(getApplicationContext(), MainActivity_wallet.class);
+        Intent intent = new Intent(getApplicationContext(), ReviewPage.class);
+        intent.putExtra("user" , acceptedUser);
+        intent.putExtra("text" , "cust");
         finish();
         startActivity(intent);
     }
 
     public void CompleteCustomerAfter(View view) {
-        Intent intent = new Intent(getApplicationContext(), MainActivity3_wallet.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity_wallet.class);
         finish();
         startActivity(intent);
     }

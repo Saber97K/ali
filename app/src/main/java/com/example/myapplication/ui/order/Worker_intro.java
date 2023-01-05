@@ -11,6 +11,7 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.Session;
 import com.example.myapplication.databinding.FragmentWorkerOrderBinding;
 import com.example.myapplication.ui.Utils.AdapterOrder;
 import com.example.myapplication.ui.Utils.CategoryAdapter;
@@ -24,12 +25,14 @@ public class Worker_intro extends Fragment {
     private FragmentWorkerOrderBinding binding;
     private ListView noteListView , finished;
     private View root;
+    private int currentUser;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentWorkerOrderBinding.inflate(inflater, container, false);
         root = binding.getRoot();
+        currentUser = ((Session) this.getActivity().getApplication()).getSomeVariable();
         OrdersManage.orderArrayList.clear();
         noteListView = binding.workerOrderList;
         finished = binding.finishedList;
@@ -42,11 +45,11 @@ public class Worker_intro extends Fragment {
 
 
     private void setOrderAdapter( ) {
-        AdapterOrder noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.OngoingOrder());
+        AdapterOrder noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.OngoingOrderAvailable());
         noteListView.setAdapter(noteAdapter);
     }
     private void setFinishedAdapter( ) {
-        AdapterOrder noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.CompletedOrder());
+        AdapterOrder noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.CompletedOrderByThisPerson(currentUser));
         finished.setAdapter(noteAdapter);
     }
 

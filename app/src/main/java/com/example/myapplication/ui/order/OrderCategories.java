@@ -32,7 +32,13 @@ public class OrderCategories extends Fragment {
         root = binding.getRoot();
         CategoryManage.categoryManages.clear();
         noteListView = binding.categoriesListView;
-        loadFromDBToMemory();
+
+        SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(getActivity());
+        sqLiteManager.populateCategoryListArray();
+        if(CategoryManage.categoryManages.size() == 0 ){
+            ToDBInitialSettings();
+            sqLiteManager.populateCategoryListArray();
+        }
         setCategoryAdapter();
         setOnClickListener();
         return root;
@@ -40,10 +46,6 @@ public class OrderCategories extends Fragment {
     private void setCategoryAdapter( ) {
         CategoryAdapter noteAdapter = new CategoryAdapter(getActivity().getApplicationContext(), CategoryManage.categoryManages);
         noteListView.setAdapter(noteAdapter);
-    }
-    private void loadFromDBToMemory() {
-        SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(getActivity());
-        sqLiteManager.populateCategoryListArray();
     }
     private void ToDBInitialSettings() {
         SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(getActivity());
@@ -53,7 +55,7 @@ public class OrderCategories extends Fragment {
         CategoryManage categoryManage4 = new CategoryManage(3,"Operations");
         CategoryManage categoryManage5 = new CategoryManage(4,"Entertainment");
         CategoryManage categoryManage6 = new CategoryManage(5,"Sports");
-        CategoryManage categoryManage7 = new CategoryManage(4,"Others");
+        CategoryManage categoryManage7 = new CategoryManage(6,"Others");
         sqLiteManager.addCategoryToDatabase(categoryManage1);
         sqLiteManager.addCategoryToDatabase(categoryManage2);
         sqLiteManager.addCategoryToDatabase(categoryManage3);

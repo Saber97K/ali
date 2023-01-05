@@ -100,7 +100,6 @@ public class OrderDetailsForWorker extends AppCompatActivity {
 
 
             Intent intent = new Intent(getApplicationContext(), MainActivity4_wallet.class);
-            intent.putExtra("order", OrderId);
             finish();
             startActivity(intent);
         } else {

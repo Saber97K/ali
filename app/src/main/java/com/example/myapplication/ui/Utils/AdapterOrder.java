@@ -32,6 +32,8 @@ import java.util.List;
             TextView title = convertView.findViewById(R.id.cellOrderTitle);
             TextView date = convertView.findViewById(R.id.cellOrderDate);
             TextView id = convertView.findViewById(R.id.orderId);
+            TextView userId = convertView.findViewById(R.id.userId3);
+            TextView acceptedUser = convertView.findViewById(R.id.orderAccepted2);
             TextView price = convertView.findViewById(R.id.cellOrderPrice);
             TextView type = convertView.findViewById(R.id.cellOrderType);
             TextView desc = convertView.findViewById(R.id.cellOrderDesc);
@@ -42,6 +44,8 @@ import java.util.List;
             price.setText(String.valueOf(order.getPrice()));
             type.setText(order.getType());
             desc.setText(order.getDescription());
+            userId.setText(String.valueOf(order.getUser_id()));
+            acceptedUser.setText(String.valueOf(order.getAccepted_user_id()));
 
             return convertView;
         }

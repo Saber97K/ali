@@ -2,6 +2,7 @@ package com.example.myapplication.ui.wallet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,6 +11,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.Session;
 import com.example.myapplication.ui.Utils.ManageTopUps;
 import com.example.myapplication.ui.Utils.ManageWallet;
+import com.example.myapplication.ui.Utils.Success;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
 
 import java.util.Calendar;
@@ -95,5 +97,7 @@ public class TopUpProcess extends AppCompatActivity {
         sqLiteManager.UpdateWallet(manageWallet);
         ManageTopUps.TopUpsList.add(manageTopUps);
         finish();
+        Intent intent = new Intent(this, Success.class);
+        startActivity(intent);
     }
 }

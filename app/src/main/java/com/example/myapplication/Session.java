@@ -10,6 +10,7 @@ public class Session extends Application {
         return user_id;
     }
 
+
     public void setSomeVariable(int someVariable) {
         this.user_id = someVariable;
     }

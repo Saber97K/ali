@@ -44,7 +44,7 @@
             android:button="@android:color/transparent"
             android:layout_weight="1"
             android:background="@drawable/button_selector"
-            android:onClick="rdButton"
+            android:onClick="rdButton1"
             />
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/completedRadio"
@@ -56,7 +56,7 @@
             android:button="@android:color/transparent"
             android:layout_weight="1"
             android:background="@drawable/button_selector"
-            android:onClick="rdButton"
+            android:onClick="rdButton2"
             />
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/cancelledRadio"
@@ -68,7 +68,7 @@
             android:button="@android:color/transparent"
             android:layout_weight="1"
             android:background="@drawable/button_selector"
-            android:onClick="rdButton"
+            android:onClick="rdButton3"
             />
     </RadioGroup>
     <ListView

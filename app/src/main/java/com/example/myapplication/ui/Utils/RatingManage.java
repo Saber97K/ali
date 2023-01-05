@@ -8,13 +8,23 @@ public class RatingManage {
     private int to_user;
     private int from_user;
     private int value;
+    private String desc;
     public static ArrayList<RatingManage> ratingsArrayList = new ArrayList<>();
 
-    public RatingManage(int id, int to_user, int from_user, int value) {
+    public RatingManage(int id, int to_user, int from_user, int value , String desc) {
         this.id = id;
+        this.desc = desc;
         this.to_user = to_user;
         this.from_user = from_user;
         this.value = value;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public int getId() {

@@ -14,6 +14,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.Session;
 import com.example.myapplication.databinding.FoundPartnerBinding;
 import com.example.myapplication.ui.Utils.CategoryManage;
+import com.example.myapplication.ui.Utils.ManageVisited;
 import com.example.myapplication.ui.Utils.ManageWallet;
 import com.example.myapplication.ui.Utils.OrdersManage;
 import com.example.myapplication.ui.Utils.UsersManage;
@@ -71,6 +72,9 @@ public class OrderFoundPartner extends Fragment {
         btnOut.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View view) {
+                                          int visitsSize = ManageVisited.VisitsList.size();
+                                          ManageVisited manageVisited = new ManageVisited(visitsSize, acceptedUserManage.getId(),ordersManage.getId(),0);
+                                          sqLiteManager.addVisits(manageVisited);
                                           ordersManage.setStatus(1);
                                           sqLiteManager.UpdateOrder(ordersManage);
                                           usersManage.setActiveOrder(-1);
@@ -93,12 +97,16 @@ public class OrderFoundPartner extends Fragment {
         btn2.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View view) {
+                                          int visitsSize = ManageVisited.VisitsList.size();
+                                          ManageVisited manageVisited = new ManageVisited(visitsSize, acceptedUserManage.getId(),ordersManage.getId(),0);
+                                          sqLiteManager.addVisits(manageVisited);
                                           ordersManage.setStatus(2);
                                           sqLiteManager.UpdateOrder(ordersManage);
                                           acceptedUserManage.setActiveOrder(-1); // worker no more task
                                           usersManage.setActiveOrder(-1);   // customer no more order for worker
                                           sqLiteManager.UpdateUser(acceptedUserManage);
                                           sqLiteManager.UpdateUser(usersManage);
+
                                           Intent intent = new Intent(getActivity(), AfterCompleteCustomer.class);
                                           intent.putExtra("id" , acceptedUserManage.getId());
                                           getActivity().finish();
@@ -114,6 +122,7 @@ public class OrderFoundPartner extends Fragment {
         sqLiteManager = SQLiteManager.instanceOfDatabase(getActivity());
         sqLiteManager.populateOrderListArray();
         sqLiteManager.populateWalletArray();
+        sqLiteManager.populateVisitsListArray();
     }
 
 
