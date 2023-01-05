@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_accepted_Order_From">
+
+    <fragment
+        android:id="@+id/navigation_record"
+        android:name="com.example.myapplication.ui.record.RecordFragment"
+        android:label="@string/title_record"
+        tools:layout="@layout/fragment_record" />
+
+    <fragment
+        android:id="@+id/navigation_wallet"
+        android:name="com.example.myapplication.ui.wallet.WalletAddedWorker"
+        android:label="@string/title_wallet"
+        tools:layout="@layout/wallet_added_worker" />
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.myapplication.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_accepted_Order_From"
+        android:name="com.example.myapplication.ui.order.WorkerIntro2"
+        android:label="@string/title_found_partner"
+        tools:layout="@layout/worker_intro2" />
+</navigation>

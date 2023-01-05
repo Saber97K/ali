@@ -11,6 +11,8 @@ import com.example.myapplication.MainActivity3;
 import com.example.myapplication.MainActivity4;
 import com.example.myapplication.R;
 import com.example.myapplication.Session;
+import com.example.myapplication.added_wallet.MainActivity3_wallet;
+import com.example.myapplication.added_wallet.MainActivity4_wallet;
 import com.example.myapplication.ui.Utils.OrdersManage;
 import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
@@ -77,14 +79,14 @@ public class OrderAccepted extends AppCompatActivity {
         usersManage.setActiveOrder(-1);
         sqLiteManager.UpdateOrder(ordersManage);
 
-        Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity3_wallet.class);
         finish();
         startActivity(intent);
     }
 
     public void backButtonFromActive(View view) {
 
-        Intent intent = new Intent(getApplicationContext(), MainActivity4.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity4_wallet.class);
         finish();
         startActivity(intent);
     }

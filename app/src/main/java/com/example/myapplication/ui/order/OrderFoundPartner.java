@@ -21,6 +21,7 @@ import com.example.myapplication.Session;
 import com.example.myapplication.databinding.FoundPartnerBinding;
 import com.example.myapplication.ui.Utils.CategoryAdapter;
 import com.example.myapplication.ui.Utils.CategoryManage;
+import com.example.myapplication.ui.Utils.ManageWallet;
 import com.example.myapplication.ui.Utils.OrdersManage;
 import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
@@ -33,6 +34,7 @@ public class OrderFoundPartner extends Fragment {
     private int currentUser;
     private SQLiteManager sqLiteManager;
     private UsersManage usersManage, acceptedUserManage;
+    private ManageWallet manageWallet , manageWalletAccepted;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -61,6 +63,16 @@ public class OrderFoundPartner extends Fragment {
                 acceptedUserManage = UsersManage.UsersList.get(i);
             }
         }
+        for (int i = 0; i < ManageWallet.WalletList.size(); i++){
+            if(ManageWallet.WalletList.get(i).getUser_id() == currentUser){
+                manageWallet = ManageWallet.WalletList.get(i);
+            }
+        }
+        for (int i = 0; i < ManageWallet.WalletList.size(); i++){
+            if(ManageWallet.WalletList.get(i).getUser_id() == ordersManage.getAccepted_user_id()){
+                manageWalletAccepted = ManageWallet.WalletList.get(i);
+            }
+        }
 
         Button btnOut = (Button) root.findViewById(R.id.buttonCompleteOrder);
         btnOut.setOnClickListener(new View.OnClickListener() {
@@ -69,8 +81,12 @@ public class OrderFoundPartner extends Fragment {
                                           ordersManage.setStatus(1);
                                           sqLiteManager.UpdateOrder(ordersManage);
                                           usersManage.setActiveOrder(-1);
+                                          manageWallet.setBalance((float) (manageWallet.getBalance() - ordersManage.getPrice()));
+                                          manageWalletAccepted.setBalance((float) (manageWalletAccepted.getBalance() + ordersManage.getPrice()));
                                           acceptedUserManage.setActiveOrder(-1);
                                           sqLiteManager.UpdateUser(usersManage);
+                                          sqLiteManager.UpdateWallet(manageWallet);
+                                          sqLiteManager.UpdateWallet(manageWalletAccepted);
                                           sqLiteManager.UpdateUser(acceptedUserManage);
                                           Intent intent = new Intent(getActivity(), AfterCompleteCustomer.class);
                                           intent.putExtra("id" , acceptedUserManage.getId());
@@ -84,10 +100,12 @@ public class OrderFoundPartner extends Fragment {
         btn2.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(View view) {
-                                          ordersManage.setAccepted_user_id(-1);
+                                          ordersManage.setStatus(2);
                                           sqLiteManager.UpdateOrder(ordersManage);
-                                          acceptedUserManage.setActiveOrder(-1);
+                                          acceptedUserManage.setActiveOrder(-1); // worker no more task
+                                          usersManage.setActiveOrder(-1);   // customer no more order for worker
                                           sqLiteManager.UpdateUser(acceptedUserManage);
+                                          sqLiteManager.UpdateUser(usersManage);
                                           Intent intent = new Intent(getActivity(), AfterCompleteCustomer.class);
                                           intent.putExtra("id" , acceptedUserManage.getId());
                                           getActivity().finish();
@@ -102,6 +120,7 @@ public class OrderFoundPartner extends Fragment {
     private void loadFromDBToMemory() {
         sqLiteManager = SQLiteManager.instanceOfDatabase(getActivity());
         sqLiteManager.populateOrderListArray();
+        sqLiteManager.populateWalletArray();
     }
 
 

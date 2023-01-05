@@ -18,6 +18,8 @@ import com.example.myapplication.MainActivity;
 import com.example.myapplication.MainActivity2;
 import com.example.myapplication.R;
 import com.example.myapplication.Session;
+import com.example.myapplication.added_wallet.MainActivity3_wallet;
+import com.example.myapplication.added_wallet.MainActivity_wallet;
 import com.example.myapplication.ui.Utils.AdapterUser;
 import com.example.myapplication.ui.Utils.CategoryManage;
 import com.example.myapplication.ui.Utils.OrdersManage;
@@ -61,13 +63,13 @@ public class AfterCompleteCustomer extends AppCompatActivity {
 
 
     public void ReviewButton(View view) {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity_wallet.class);
         finish();
         startActivity(intent);
     }
 
     public void CompleteCustomerAfter(View view) {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent intent = new Intent(getApplicationContext(), MainActivity3_wallet.class);
         finish();
         startActivity(intent);
     }

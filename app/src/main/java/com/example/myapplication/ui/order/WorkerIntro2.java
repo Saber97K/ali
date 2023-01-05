@@ -17,6 +17,7 @@ import com.example.myapplication.GeneralModule.MainLobby;
 import com.example.myapplication.MainActivity3;
 import com.example.myapplication.R;
 import com.example.myapplication.Session;
+import com.example.myapplication.added_wallet.MainActivity3_wallet;
 import com.example.myapplication.databinding.WorkerIntro2Binding;
 import com.example.myapplication.ui.Utils.CategoryAdapter;
 import com.example.myapplication.ui.Utils.CategoryManage;
@@ -64,7 +65,7 @@ public class WorkerIntro2 extends Fragment {
         cancel.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        Intent intent = new Intent(getActivity(), MainActivity3.class);
+                                        Intent intent = new Intent(getActivity(), MainActivity3_wallet.class);
                                         ordersManage.setAccepted_user_id(-1);
                                         usersManage.setActiveOrder(-1);
                                         sqLiteManager.UpdateUser(usersManage);

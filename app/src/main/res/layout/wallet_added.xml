@@ -59,7 +59,7 @@
             >
 
             <Button
-                android:id="@+id/chooseTopup"
+                android:id="@+id/chooseToWithdraw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/topup"

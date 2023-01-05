@@ -13,14 +13,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
 import com.example.myapplication.Session;
-import com.example.myapplication.databinding.WalletAddedBinding;
+import com.example.myapplication.databinding.WalletAddedWorkerBinding;
 import com.example.myapplication.ui.Utils.ManageTopUps;
 import com.example.myapplication.ui.Utils.ManageWallet;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
 
-public class WalletAdded extends Fragment {
+public class WalletAddedWorker extends Fragment {
 
-    private WalletAddedBinding binding;
+    private WalletAddedWorkerBinding binding;
     private int currentUser;
     private View view1;
     private ManageWallet manageWallet;
@@ -30,17 +30,14 @@ public class WalletAdded extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         sqLiteManager = SQLiteManager.instanceOfDatabase(getActivity());
-        ManageTopUps.TopUpsList.clear();
-
         sqLiteManager.populateWalletArray();
-        sqLiteManager.populateTopUps();
 
 
 
         currentUser = ((Session) this.getActivity().getApplication()).getSomeVariable();
-        binding = WalletAddedBinding.inflate(inflater, container, false);
+        binding = WalletAddedWorkerBinding.inflate(inflater, container, false);
         view1 = binding.getRoot();
-        customerBalanceNum = binding.customerBalanceNum;
+        customerBalanceNum = binding.WithdrawBalanceNum;
 
 
         for (int i = 0; i < ManageWallet.WalletList.size(); i++){
@@ -48,8 +45,6 @@ public class WalletAdded extends Fragment {
                 manageWallet = ManageWallet.WalletList.get(i);
             }
         }
-        ManageWallet.WalletList.clear();
-
 
 
         customerBalanceNum.setText(manageWallet.getBalance() + "");
@@ -58,8 +53,8 @@ public class WalletAdded extends Fragment {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), TopUpProcess.class);
-                intent.putExtra("topup" , manageWallet.getId());
+                Intent intent = new Intent(getActivity(), WithdrawProcess.class);
+                intent.putExtra("withdraw" , manageWallet.getId());
                 startActivity(intent);
             }
         });
@@ -76,13 +71,14 @@ public class WalletAdded extends Fragment {
     @Override
     public void onResume()
     {
-        sqLiteManager.populateWalletArray();
+
         for (int i = 0; i < ManageWallet.WalletList.size(); i++){
             if(ManageWallet.WalletList.get(i).getUser_id() == currentUser){
                 manageWallet = ManageWallet.WalletList.get(i);
             }
         }
-        customerBalanceNum.setText( manageWallet.getBalance() + "");
+
+        customerBalanceNum.setText(manageWallet.getBalance() + "");
 
         super.onResume();
 

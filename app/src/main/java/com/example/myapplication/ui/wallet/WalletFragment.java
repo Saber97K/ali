@@ -47,6 +47,7 @@ public class WalletFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getActivity(), WalletAddingActivity.class);
+                    getActivity().finish();
                     startActivity(intent);
                 }
             });

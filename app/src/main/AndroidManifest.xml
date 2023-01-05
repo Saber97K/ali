@@ -23,6 +23,14 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".ui.wallet.WithdrawProcess"
+            android:exported="false"
+             android:theme="@style/Theme.MyApplication.NoActionBar" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/title_activity_main"
@@ -40,6 +48,34 @@
         </activity>
         <activity
             android:name=".added_wallet.MainActivity_wallet"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".added_wallet.MainActivity6_wallet"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".added_wallet.MainActivity7_wallet"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".added_wallet.MainActivity8_wallet"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".added_wallet.MainActivity9_wallet"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
