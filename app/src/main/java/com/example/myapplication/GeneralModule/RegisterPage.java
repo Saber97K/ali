@@ -28,6 +28,10 @@ public class RegisterPage extends AppCompatActivity {
     }
 
     public void SignUp(View view) {
+
+        //check name is not empty
+        //check email is valid
+        //check password is more than 8 char
         String name = String.valueOf(nameEditText.getText());
         String email = String.valueOf(emailEditText.getText());
         String password = String.valueOf(passwordEditText.getText());
