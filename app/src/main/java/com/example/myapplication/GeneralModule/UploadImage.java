@@ -54,9 +54,10 @@ public class UploadImage extends AppCompatActivity {
             obj.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(obj, pickImage);
 
-        }catch (Exception e){
-
+        }catch (Exception e){//Permission not allowed etc
+            Toast.makeText(this, "An Error Occurred, Try Again Later  ", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     @Override

@@ -47,6 +47,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
     private static final String USERS_BIRTHDAY = "birthday";
     private static final String USERS_ACTIVE_ORDER = "activeOrder";
     private static final String USERS_IMAGE = "image";
+    //add OTP static final
 
     //
 
@@ -133,6 +134,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
                     .append(USERS_LOCATION).append(" TEXT, ").append(USERS_Gender).append(" TEXT, ")
                     .append(USERS_PHONE_NUMBER).append(" TEXT, ").append(USERS_ACTIVE_ORDER).append(" INT, ")
                     .append(USERS_IMAGE).append(" BLOB) ");
+            //append for OTP (string) instead of string write TEXT
 
             sqLiteDatabase.execSQL(UserSql.toString());
         } catch (SQLiteException e) {
@@ -373,8 +375,9 @@ public class SQLiteManager extends SQLiteOpenHelper {
                     String phone = result.getString(8);
                     int active = result.getInt(9);
                     byte[] image = result.getBlob(10);
+                    //add for OTP, string OTP = result.xxx
                     Bitmap image1 = BitmapFactory.decodeByteArray(image, 0, image.length);
-
+                    //need to refresh constructor
                     UsersManage note = new UsersManage(id, role, email, password, birthday, name, location, gender, phone, active,image1);
                     UsersManage.UsersList.add(note);
                 }
@@ -540,7 +543,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
             contentValues.put(USERS_Gender, note.getGender());
             contentValues.put(USERS_BIRTHDAY, note.getBirthday());
             contentValues.put(USERS_ACTIVE_ORDER, note.getActiveOrder());
-
+            //add for OTP -- for user to update their password
             sqLiteDatabase.update(USERS_TABLE_NAME, contentValues, USERS_ID_FIELD + " =? ", new String[]{String.valueOf(note.getId())});
         } catch (SQLiteException e) {
             Log.e(TAG, "Error reading data to database", e);

@@ -23,6 +23,7 @@ public class UsersManage {
     private String phoneNumber;
     private int activeOrder;
     private Bitmap image;
+    //add variable for OTP (string)
 
     public UsersManage(int id, String role, String email, String password, String birthday, String name, String location, String gender, String phoneNumber, int activeOrder, Bitmap image) {
         this.id = id;
@@ -36,6 +37,7 @@ public class UsersManage {
         this.phoneNumber = phoneNumber;
         this.activeOrder = activeOrder;
         this.image = image;
+        //add OTP
     }
 
     public Bitmap getImage() {
@@ -75,7 +77,7 @@ public class UsersManage {
 
         return users;
     }
-
+//getter & setter for OTP
     public static ArrayList<UsersManage> getUsersList() {
         return UsersList;
     }
