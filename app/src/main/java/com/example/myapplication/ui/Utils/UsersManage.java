@@ -77,7 +77,7 @@ public class UsersManage {
 
         return users;
     }
-
+//getter & setter for OTP
     public static ArrayList<UsersManage> getUsersList() {
         return UsersList;
     }

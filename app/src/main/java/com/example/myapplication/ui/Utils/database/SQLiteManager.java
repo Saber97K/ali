@@ -543,7 +543,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
             contentValues.put(USERS_Gender, note.getGender());
             contentValues.put(USERS_BIRTHDAY, note.getBirthday());
             contentValues.put(USERS_ACTIVE_ORDER, note.getActiveOrder());
-
+            //add for OTP -- for user to update their password
             sqLiteDatabase.update(USERS_TABLE_NAME, contentValues, USERS_ID_FIELD + " =? ", new String[]{String.valueOf(note.getId())});
         } catch (SQLiteException e) {
             Log.e(TAG, "Error reading data to database", e);

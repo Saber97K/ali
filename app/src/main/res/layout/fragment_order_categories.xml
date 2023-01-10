@@ -6,13 +6,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     tools:context=".ui.order.OrderCategories">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/darkGrey"
+        android:background="@color/white"
         android:minHeight="?actionBarSize"
+        android:elevation="10dp"
         android:theme="?actionBarTheme">
 
         <TextView
@@ -20,21 +22,54 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Destiny"
-            android:textColor="@color/white"
+            android:text="DeSTiny"
+            android:textColor="@color/black"
             android:textSize="35sp"
             android:textStyle="bold" />
 
 
     </androidx.appcompat.widget.Toolbar>
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:background="@drawable/shape_guide">
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="What do you want to rent others to do?"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="22sp"/>
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please select one from the following"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:layout_marginTop="15dp"
+            android:textSize="21sp"/>
+    </LinearLayout>
+
     <ListView
         android:id="@+id/categoriesListView"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="15dp"
-        android:divider="@color/darkGrey"
-        android:dividerHeight="3dp" />
+        android:layout_marginTop="30dp"
+        android:divider="@color/white"
+        android:dividerHeight="20dp"
+        android:paddingRight="1px"
+        android:layout_marginBottom="30dp"/>
+
+
+
+
+
 
 
 </LinearLayout>

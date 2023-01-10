@@ -12,7 +12,7 @@
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="dark_pink">#E5CAB5</color>
-    <color name="bright_pink">#FFCC99</color>
+    <color name="bright_pink">#FDD184</color>
     <color name="grey">    #666666</color>
-    <color name="light_grey">#CCCCCC</color>
+    <color name="light_grey">#EDEDED</color>
 </resources>

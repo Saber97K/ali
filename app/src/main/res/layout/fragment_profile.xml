@@ -18,6 +18,7 @@
             android:layout_marginStart="72dp"
             android:layout_marginTop="12dp"
             android:hint="DD/MM/YY"
+            android:textColorHint="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/DOB_Title"
             android:onClick="TakeDate"/>
@@ -29,6 +30,8 @@
             android:layout_marginStart="72dp"
             android:layout_marginTop="12dp"
             android:hint="Location"
+            android:textColorHint="@color/black"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Location_Title"
             android:onClick="takeLoc"/>
@@ -39,28 +42,33 @@
             android:layout_marginStart="72dp"
             android:layout_marginTop="13dp"
             android:hint="Phone Number"
+            android:textColorHint="@color/black"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PhoneNo_Title" />
 
-        <TextView
-            android:id="@+id/Name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="92dp"
-            android:hint="User Name"
-            android:minHeight="40dp"
+    <TextView
+        android:id="@+id/Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="68dp"
 
-            android:text=""
-            android:textSize="20sp"
+        android:hint="User Name"
+        android:textColorHint="@color/black"
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.685"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_conversion_absoluteHeight="0dp"
-            tools:layout_conversion_absoluteWidth="0dp" />
+        android:minHeight="40dp"
 
-        <TextView
+        android:text=""
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Profile_Pic"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="0dp"
+        tools:layout_conversion_absoluteWidth="0dp" />
+
+    <TextView
             android:id="@+id/Info_Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -75,15 +83,15 @@
             tools:layout_conversion_absoluteHeight="0dp"
             tools:layout_conversion_absoluteWidth="0dp" />
 
-        <ImageView
-            android:id="@+id/Profile_Pic"
-            android:layout_width="116dp"
-            android:layout_height="113dp"
-            android:layout_marginTop="60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.244"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/Profile_Pic"
+        android:layout_width="116dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.244"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/DOB_Title"
@@ -121,38 +129,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Location" />
 
-        <TextView
-            android:id="@+id/Sound_Notif"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="40dp"
-            android:text="Sound Notification"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Phone_Number" />
+    <TextView
+        android:id="@+id/Sound_Notif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="392dp"
+        android:text="Sound Notification"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Name" />
 
-        <TextView
-            android:id="@+id/RatingEDIT"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="118dp"
-            android:text="Number"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Name" />
+    <TextView
+        android:id="@+id/RatingEDIT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="118dp"
+        android:text="Number"
+        android:textColorHint="@color/black"
 
-        <ImageView
-            android:id="@+id/imageView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="7dp"
-            app:layout_constraintEnd_toStartOf="@+id/Rating"
-            app:layout_constraintTop_toBottomOf="@+id/Name" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Name" />
 
-        <Button
+    <Button
             android:id="@+id/LogoutBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
