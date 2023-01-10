@@ -49,6 +49,7 @@ public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ViewHolder> {
             @Override
             public void onClick(View v) {
                     mCallback.onClick(String.valueOf(modal.getId()));
+
             }
         });
     }
