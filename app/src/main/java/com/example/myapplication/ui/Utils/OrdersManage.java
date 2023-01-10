@@ -65,6 +65,24 @@ public class OrdersManage {
 
         return Ongoing;
     }
+    public static ArrayList<OrdersManage> OngoingOrderAvailable(int cat_id)
+    {
+        String categoryManage = "";
+        ArrayList<OrdersManage> Ongoing = new ArrayList<>();
+        for (int i =0 ; i < CategoryManage.categoryManages.size(); i++) {
+            if(CategoryManage.categoryManages.get(i).getId() == cat_id){
+                categoryManage = CategoryManage.categoryManages.get(i).getText();
+            }
+        }
+
+        for(OrdersManage order : orderArrayList)
+        {
+            if(order.getStatus() == 0 && order.getAccepted_user_id() == -1  && order.getCategory().equals(categoryManage))
+                Ongoing.add(order);
+        }
+
+        return Ongoing;
+    }
 
     public static ArrayList<OrdersManage> CompletedOrder()
     {
