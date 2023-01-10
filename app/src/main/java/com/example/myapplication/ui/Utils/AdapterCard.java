@@ -37,7 +37,7 @@ public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ViewHolder> {
     @Override
     public AdapterCard.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // passing our layout file for displaying our card item
-        return new AdapterCard.ViewHolder(LayoutInflater.from(context).inflate(R.layout.category_worker_cell, parent, false));
+        return new AdapterCard.ViewHolder(LayoutInflater.from(context).inflate(R.layout.worker_cat_cell, parent, false));
     }
 
     @Override
