@@ -30,11 +30,19 @@ public class CategoryAdapter extends ArrayAdapter<CategoryManage>
         if(convertView == null)
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.category_cell, parent, false);
 
+<<<<<<< Updated upstream
 //        TextView id = convertView.findViewById(R.id.categoryIdTextView);
         TextView title = convertView.findViewById(R.id.categoryNameTextView);
 
         title.setText(order.getText());
 //        id.setText(String.valueOf(order.getId()));
+=======
+        /*TextView id = convertView.findViewById(R.id.categoryIdTextView);*/
+        TextView title = convertView.findViewById(R.id.categoryNameTextView);
+
+        title.setText(order.getText());
+        /*id.setText(String.valueOf(order.getId()));*/
+>>>>>>> Stashed changes
         return convertView;
     }
 }

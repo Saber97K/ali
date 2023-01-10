@@ -18,7 +18,11 @@
         android:textColor="@color/darkGrey"
         android:textSize="25sp"
         android:layout_marginRight="15dp"/>-->
+<<<<<<< Updated upstream
     <!--android:src="@mipmap/logistic"-->
+=======
+        <!--android:src="@mipmap/logistic"-->
+>>>>>>> Stashed changes
 
     <TextView
         android:id="@+id/categoryNameTextView"
