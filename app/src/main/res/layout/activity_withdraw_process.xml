@@ -98,6 +98,7 @@
                 android:textSize="@dimen/button_front_size_samll"
                 android:text="200"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/btn_selector"
                 android:onClick="button41btn"/>
             <Button
@@ -110,6 +111,7 @@
                 android:text="250"
 
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
                 android:onClick="button51btn"
 
                 android:background="@drawable/btn_selector"/>
@@ -121,6 +123,7 @@
                 android:gravity="center"
                 android:textSize="@dimen/button_front_size_samll"
                 android:text="300"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/btn_selector"
                 android:onClick="button61btn"/>
 

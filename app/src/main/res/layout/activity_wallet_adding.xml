@@ -51,8 +51,8 @@
             android:textAllCaps="false"
             android:textSize="25sp"
             android:enabled="true"
-            android:textColor="@color/grey"
-            android:background="@drawable/shape"
+            android:textColor="@color/black"
+            android:background="@drawable/shape_button"
             android:onClick="ConfirmBank"/>
 
 
