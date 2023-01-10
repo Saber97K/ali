@@ -39,6 +39,8 @@ public class LoginPage extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
 
         initWidgets();
+
+
     }
 
     private void initWidgets() {
