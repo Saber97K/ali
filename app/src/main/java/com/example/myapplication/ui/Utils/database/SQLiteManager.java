@@ -47,6 +47,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
     private static final String USERS_BIRTHDAY = "birthday";
     private static final String USERS_ACTIVE_ORDER = "activeOrder";
     private static final String USERS_IMAGE = "image";
+    private static final String USERS_OTP = "otp";
 
     //
 
@@ -132,7 +133,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
                     .append(USERS_ROLE).append(" TEXT, ").append(USERS_BIRTHDAY).append(" TEXT, ")
                     .append(USERS_LOCATION).append(" TEXT, ").append(USERS_Gender).append(" TEXT, ")
                     .append(USERS_PHONE_NUMBER).append(" TEXT, ").append(USERS_ACTIVE_ORDER).append(" INT, ")
-                    .append(USERS_IMAGE).append(" BLOB) ");
+                    .append(USERS_IMAGE).append(" BLOB, ").append(USERS_OTP).append("TEXT)");
 
             sqLiteDatabase.execSQL(UserSql.toString());
         } catch (SQLiteException e) {
@@ -243,6 +244,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
             image.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
             byte[] imageByteArray = byteArrayOutputStream.toByteArray();
             contentValues.put(USERS_IMAGE , imageByteArray);
+            contentValues.put(USERS_OTP, note.getOtp());
 
             sqLiteDatabase.insert(USERS_TABLE_NAME, null, contentValues);
         } catch (SQLiteException e) {
@@ -373,9 +375,10 @@ public class SQLiteManager extends SQLiteOpenHelper {
                     String phone = result.getString(8);
                     int active = result.getInt(9);
                     byte[] image = result.getBlob(10);
+                    String otp = result.getString(11);
                     Bitmap image1 = BitmapFactory.decodeByteArray(image, 0, image.length);
 
-                    UsersManage note = new UsersManage(id, role, email, password, birthday, name, location, gender, phone, active,image1);
+                    UsersManage note = new UsersManage(id, role, email, password, birthday, name, location, gender, phone, active,image1, otp);
                     UsersManage.UsersList.add(note);
                 }
             }

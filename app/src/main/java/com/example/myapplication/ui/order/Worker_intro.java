@@ -23,7 +23,7 @@ import com.example.myapplication.ui.Utils.database.SQLiteManager;
 public class Worker_intro extends Fragment {
 
     private FragmentWorkerOrderBinding binding;
-    private ListView noteListView , finished;
+    private ListView noteListView ;
     private View root;
     private int currentUser;
 
@@ -35,10 +35,8 @@ public class Worker_intro extends Fragment {
         currentUser = ((Session) this.getActivity().getApplication()).getSomeVariable();
         OrdersManage.orderArrayList.clear();
         noteListView = binding.workerOrderList;
-        finished = binding.finishedList;
         loadFromDBToMemory();
         setOrderAdapter();
-        setFinishedAdapter();
         setOnClickListener();
         return root;
     }
@@ -47,10 +45,6 @@ public class Worker_intro extends Fragment {
     private void setOrderAdapter( ) {
         AdapterOrder noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.OngoingOrderAvailable());
         noteListView.setAdapter(noteAdapter);
-    }
-    private void setFinishedAdapter( ) {
-        AdapterOrder noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.CompletedOrderByThisPerson(currentUser));
-        finished.setAdapter(noteAdapter);
     }
 
     private void loadFromDBToMemory() {
@@ -77,7 +71,6 @@ public class Worker_intro extends Fragment {
     {
         super.onResume();
         setOrderAdapter();
-        setFinishedAdapter();
     }
     @Override
     public void onDestroyView() {

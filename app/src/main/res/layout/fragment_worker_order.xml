@@ -27,26 +27,6 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Completed by him" />
-
-    <ListView
-        android:id="@+id/finishedList"
-        android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:layout_marginTop="15dp"
-        android:divider="@color/darkGrey"
-        android:dividerHeight="3dp"
-        android:layout_marginBottom="30dp"/>
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ongoing tasks" />
 
     <ListView
         android:id="@+id/worker_OrderList"

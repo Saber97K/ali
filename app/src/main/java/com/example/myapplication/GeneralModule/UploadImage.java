@@ -18,6 +18,8 @@ import com.example.myapplication.R;
 import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
 
+import java.util.Random;
+
 public class UploadImage extends AppCompatActivity {
     private ImageView imageView;
     private Button button1, button2;
@@ -76,13 +78,24 @@ public class UploadImage extends AppCompatActivity {
         }
 
     }
+    public static String generateRandomPassword(int len) {
+        String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"
+                +"lmnopqrstuvwxyz!@#$%&";
+        Random rnd = new Random();
+        StringBuilder sb = new StringBuilder(len);
+        for (int i = 0; i < len; i++)
+            sb.append(chars.charAt(rnd.nextInt(chars.length())));
+        return sb.toString();
+    }
 
     public void Register2PageGo(View view) {
+        String otp;
         try {
             Intent first = new Intent(this, LoginPage.class);
             int id = UsersManage.UsersList.size();
             if (imageView.getDrawable() != null && imageToScore!= null) {
-                UsersManage user = new UsersManage(id, role, email, password, date, name, address, gender, phone, -1, imageToScore);
+                otp = generateRandomPassword(8);
+                UsersManage user = new UsersManage(id, role, email, password, date, name, address, gender, phone, -1, imageToScore, otp);
                 UsersManage.UsersList.add(user);
                 sqLiteManager.addUserToDatabase(user);
                 finish();

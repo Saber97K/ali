@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.Session;
@@ -35,6 +36,8 @@ public class OrderCreate extends AppCompatActivity {
     private int currentUser;
     private UsersManage usersManage;
     private ManageWallet manageWallet;
+    private double price;
+    private boolean checker;
 
 
     @Override
@@ -123,6 +126,7 @@ public class OrderCreate extends AppCompatActivity {
     }
 
     public void Publish(View view) {
+        checker = true;
         SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this);
         ManageWallet.WalletList.clear();
         OrdersManage.orderArrayList.clear();
@@ -140,15 +144,12 @@ public class OrderCreate extends AppCompatActivity {
                 manageWallet = ManageWallet.WalletList.get(i);
             }
         }
-
-        String desc = String.valueOf(descEditText.getText());
-        String title = String.valueOf(titleEditText.getText());
-        double price = Double.parseDouble(String.valueOf(priceEditText.getText()));
         int id = OrdersManage.orderArrayList.size() + 1;
+
         if(manageWallet == null){
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Message");
-            builder.setMessage("No wallet pls add it");
+            builder.setMessage("No wallet please add it");
             // add buttons and their events
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
@@ -170,21 +171,30 @@ public class OrderCreate extends AppCompatActivity {
             dialog.show();
 
         }else {
-            if (price <= manageWallet.getBalance()) {
+            String desc = String.valueOf(descEditText.getText());
+            String title = String.valueOf(titleEditText.getText());
+            try {
+                price = Double.parseDouble(String.valueOf(priceEditText.getText()));
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Price must be numerical", Toast.LENGTH_SHORT).show();
+                checker = false;
+            }
+            if (price <= manageWallet.getBalance()) {//can procee
 
-
-                usersManage.setActiveOrder(id);
-                OrdersManage order = new OrdersManage(id, currentUser, -1, type, title, desc, price, date, 0, category);
-                OrdersManage.orderArrayList.add(order);
-                sqLiteManager.addOrderToDatabase(order);
-                sqLiteManager.UpdateUser(usersManage);
-                Intent intent = new Intent(getApplicationContext(), MainActivity2_wallet.class);
-                finish();
-                startActivity(intent);
+                if(checker == true) {
+                    usersManage.setActiveOrder(id);
+                    OrdersManage order = new OrdersManage(id, currentUser, -1, type, title, desc, price, date, 0, category);
+                    OrdersManage.orderArrayList.add(order);
+                    sqLiteManager.addOrderToDatabase(order);
+                    sqLiteManager.UpdateUser(usersManage);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity2_wallet.class);
+                    finish();
+                    startActivity(intent);
+                }
             } else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Message");
-                builder.setMessage("Not have enough balance. Please topUp.");
+                builder.setMessage("Balance Insufficient. Please Top Up.");
                 // add buttons and their events
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override

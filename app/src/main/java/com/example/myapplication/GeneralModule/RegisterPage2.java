@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.ui.Utils.UsersManage;
@@ -50,20 +51,30 @@ public class RegisterPage2 extends AppCompatActivity {
 
 
     public void ContinueRegister(View view) {
+        //check address
+        //check phone number
+        //check gender - do drop down
+        //
         Intent intent = new Intent(this, UploadImage.class);
         address = String.valueOf(addressEdit.getText());
         phone = String.valueOf(phoneEdit.getText());
         gender = String.valueOf(GenderEdit.getText());
-        intent.putExtra("address" , address);
-        intent.putExtra("phone" ,phone);
-        intent.putExtra("gender",gender);
-        intent.putExtra("date",date);
-        intent.putExtra( "role" , role);
-        intent.putExtra( "name" , name);
-        intent.putExtra( "email" , email);
-        intent.putExtra( "password" , password);
-        finish();
-        startActivity(intent);
+
+        if(address.isEmpty()){
+            Toast.makeText(this, "Address can't be empty", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            intent.putExtra("address", address);
+            intent.putExtra("phone", phone);
+            intent.putExtra("gender", gender);
+            intent.putExtra("date", date);
+            intent.putExtra("role", role);
+            intent.putExtra("name", name);
+            intent.putExtra("email", email);
+            intent.putExtra("password", password);
+            finish();
+            startActivity(intent);
+        }
     }
 
         private String getTodaysDate() {
