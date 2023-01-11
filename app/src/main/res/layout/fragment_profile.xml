@@ -83,7 +83,7 @@
             tools:layout_conversion_absoluteHeight="0dp"
             tools:layout_conversion_absoluteWidth="0dp" />
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/Profile_Pic"
         android:layout_width="116dp"
         android:layout_height="113dp"

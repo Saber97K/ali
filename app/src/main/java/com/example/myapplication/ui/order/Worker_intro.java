@@ -4,15 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatRadioButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,20 +22,16 @@ import com.example.myapplication.ui.Utils.CategoryManage;
 import com.example.myapplication.ui.Utils.OrdersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
 
-import java.util.ArrayList;
-
-public class Worker_intro extends Fragment implements OnItemClick{
+public class Worker_intro extends Fragment implements OnItemClick {
 
     private FragmentWorkerOrderBinding binding;
-    public ListView noteListView ;
+    public ListView noteListView;
     private View root;
     private int currentUser;
     private RecyclerView courseRV;
     private AdapterCard dataRVAdapter;
     private SQLiteManager sqLiteManager;
     private int cat_id = -1;
-
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -57,10 +50,9 @@ public class Worker_intro extends Fragment implements OnItemClick{
         courseRV.setHasFixedSize(true);
         courseRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         loadRecyclerViewData();
-        if(cat_id == -1) {
+        if (cat_id == -1) {
             setOrderAdapter();
-        }
-        else {
+        } else {
             setOrderAdapter2();
         }
 
@@ -69,17 +61,18 @@ public class Worker_intro extends Fragment implements OnItemClick{
     }
 
     private void loadRecyclerViewData() {
-        dataRVAdapter = new AdapterCard(CategoryManage.categoryManages, getActivity(),this);
+        dataRVAdapter = new AdapterCard(CategoryManage.categoryManages, getActivity(), this);
         courseRV.setAdapter(dataRVAdapter);
     }
 
-    private void setOrderAdapter( ) {
+    private void setOrderAdapter() {
         AdapterOrder noteAdapter;
         noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.OngoingOrderAvailable());
         noteListView.setAdapter(noteAdapter);
 
     }
-    private void setOrderAdapter2( ) {
+
+    private void setOrderAdapter2() {
         AdapterOrder noteAdapter;
         noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.OngoingOrderAvailable(cat_id));
         noteListView.setAdapter(noteAdapter);
@@ -92,24 +85,19 @@ public class Worker_intro extends Fragment implements OnItemClick{
         sqLiteManager.populateOrderListArray();
         sqLiteManager.populateCategoryListArray();
     }
+
     private void setOnClickListener() {
-        noteListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
-            {
-                OrdersManage selectedNode = (OrdersManage) noteListView.getItemAtPosition(position);
-                Intent editNodeIntent = new Intent(getActivity().getApplicationContext(), OrderDetailsForWorker.class);
-                editNodeIntent.putExtra("order", selectedNode.getId());
-                getActivity().finish();
-                startActivity(editNodeIntent);
-            }
+        noteListView.setOnItemClickListener((adapterView, view, position, l) -> {
+            OrdersManage selectedNode = (OrdersManage) noteListView.getItemAtPosition(position);
+            Intent editNodeIntent = new Intent(getActivity().getApplicationContext(), OrderDetailsForWorker.class);
+            editNodeIntent.putExtra("order", selectedNode.getId());
+            getActivity().finish();
+            startActivity(editNodeIntent);
         });
     }
 
     @Override
-    public void onResume()
-    {
+    public void onResume() {
         super.onResume();
     }
 
@@ -122,5 +110,11 @@ public class Worker_intro extends Fragment implements OnItemClick{
     @Override
     public void onClick(String value) {
         cat_id = Integer.parseInt(value);
+        loadRecyclerViewData();
+        if (cat_id == -1) {
+            setOrderAdapter();
+        } else {
+            setOrderAdapter2();
+        }
     }
 }
