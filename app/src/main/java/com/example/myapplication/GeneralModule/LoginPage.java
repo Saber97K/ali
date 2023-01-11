@@ -143,4 +143,10 @@ public class LoginPage extends AppCompatActivity {
         finish();
         startActivity(NewPassword);
     }
+
+    public void BackButton2(View view) {
+        Intent back = new Intent(this, MainLobbyRegistration.class);
+        finish();
+        startActivity(back);
+    }
 }

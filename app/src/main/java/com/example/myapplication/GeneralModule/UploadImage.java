@@ -3,6 +3,8 @@ package com.example.myapplication.GeneralModule;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -15,8 +17,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.added_wallet.MainActivity6_wallet;
 import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
+
+import java.util.Random;
 
 public class UploadImage extends AppCompatActivity {
     private ImageView imageView;
@@ -77,13 +82,43 @@ public class UploadImage extends AppCompatActivity {
         }
 
     }
+    public static String generateRandomPassword(int len) {
+        String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"
+                +"lmnopqrstuvwxyz!@#$%&";
+        Random rnd = new Random();
+        StringBuilder sb = new StringBuilder(len);
+        for (int i = 0; i < len; i++)
+            sb.append(chars.charAt(rnd.nextInt(chars.length())));
+        return sb.toString();
+    }
 
     public void Register2PageGo(View view) {
+        String otp;
         try {
             Intent first = new Intent(this, LoginPage.class);
             int id = UsersManage.UsersList.size();
             if (imageView.getDrawable() != null && imageToScore!= null) {
-                UsersManage user = new UsersManage(id, role, email, password, date, name, address, gender, phone, -1, imageToScore);
+                otp = generateRandomPassword(8);
+
+                //alert dialog to inform OTP code
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("OTP for Password Reset");
+                builder.setMessage("This is your OTP code '" + otp + "' make sure to write it down so you can restore your password if you forgotten it");
+                // add buttons and their events
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do something when the "OK" button is clicked
+                    }
+                });
+                // create and show the Alert Dialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+                //end of alert dialog code
+
+
+                UsersManage user = new UsersManage(id, role, email, password, date, name, address, gender, phone, -1, imageToScore, otp);
                 UsersManage.UsersList.add(user);
                 sqLiteManager.addUserToDatabase(user);
                 finish();
@@ -95,6 +130,16 @@ public class UploadImage extends AppCompatActivity {
         catch (Exception e){
 
         }
+
+    }
+
+    public void backButton5(View view) {
+        Intent intent = new Intent(this, RegisterPage.class);
+        intent.putExtra("text", role);
+
+        finish();
+        startActivity(intent);
+
 
     }
 }

@@ -32,4 +32,10 @@ public class MainLobbyRegistration extends AppCompatActivity {
         finish();
         startActivity(Worker);
     }
+
+    public void ImageButton1(View view) {
+        Intent intent = new Intent(this, MainLobby.class);
+        finish();
+        startActivity(intent);
+    }
 }

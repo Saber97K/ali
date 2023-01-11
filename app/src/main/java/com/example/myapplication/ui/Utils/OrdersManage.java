@@ -42,12 +42,12 @@ public class OrdersManage {
             return null;
         }
 
-        public static ArrayList<OrdersManage> OngoingOrder()
+        public static ArrayList<OrdersManage> OngoingOrder(int current)
         {
             ArrayList<OrdersManage> Ongoing = new ArrayList<>();
             for(OrdersManage order : orderArrayList)
             {
-                if(order.getStatus() == 0)
+                if(order.getStatus() == 0 && order.getUser_id() == current)
                     Ongoing.add(order);
             }
 
@@ -84,12 +84,12 @@ public class OrdersManage {
         return Ongoing;
     }
 
-    public static ArrayList<OrdersManage> CompletedOrder()
+    public static ArrayList<OrdersManage> CompletedOrder(int current)
     {
         ArrayList<OrdersManage> Completed = new ArrayList<>();
         for(OrdersManage order : orderArrayList)
         {
-            if(order.getStatus() == 1)
+            if(order.getStatus() == 1 && order.getUser_id() == current)
                 Completed.add(order);
         }
 
@@ -106,12 +106,34 @@ public class OrdersManage {
 
         return Completed;
     }
-    public static ArrayList<OrdersManage> CancelledOrder()
+    public static ArrayList<OrdersManage> OngoingOrderByThisPerson(int thisUser)
+    {
+        ArrayList<OrdersManage> Completed = new ArrayList<>();
+        for(OrdersManage order : orderArrayList)
+        {
+            if(order.getStatus() == 0 && order.getAccepted_user_id() == thisUser)
+                Completed.add(order);
+        }
+
+        return Completed;
+    }
+    public static ArrayList<OrdersManage> CancelledOrderByThisPerson(int thisUser)
+    {
+        ArrayList<OrdersManage> Completed = new ArrayList<>();
+        for(OrdersManage order : orderArrayList)
+        {
+            if(order.getStatus() == 2 && order.getAccepted_user_id() == thisUser)
+                Completed.add(order);
+        }
+
+        return Completed;
+    }
+    public static ArrayList<OrdersManage> CancelledOrder(int current)
     {
         ArrayList<OrdersManage> Cancelled = new ArrayList<>();
         for(OrdersManage order : orderArrayList)
         {
-            if(order.getStatus() == 2)
+            if(order.getStatus() == 2 && order.getUser_id() == current)
                 Cancelled.add(order);
         }
 

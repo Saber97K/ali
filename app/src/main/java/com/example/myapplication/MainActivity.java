@@ -2,37 +2,25 @@ package com.example.myapplication;
 
 import android.content.ContentResolver;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
+import com.example.myapplication.databinding.ActivityMainBinding;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Objects;
-
-import com.example.myapplication.databinding.ActivityMainBinding;
-import com.example.myapplication.ui.Utils.RatingManage;
-import com.example.myapplication.ui.Utils.UsersManage;
-import com.example.myapplication.ui.Utils.database.SQLiteManager;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener{
 
@@ -139,7 +127,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     protected void onPause() {
-        mSensorManager.unregisterListener(this);
         super.onPause();
     }
 }

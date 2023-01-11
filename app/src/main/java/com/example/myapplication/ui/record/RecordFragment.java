@@ -18,6 +18,7 @@ import com.example.myapplication.Session;
 import com.example.myapplication.databinding.FragmentRecordBinding;
 import com.example.myapplication.ui.Utils.AdapterOrder;
 import com.example.myapplication.ui.Utils.OrdersManage;
+import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
 
 public class RecordFragment extends Fragment {
@@ -27,16 +28,24 @@ public class RecordFragment extends Fragment {
     private AppCompatRadioButton ongoingButton, completedButton, cancelledButton;
     private View root;
     private int choice = 0;
+    private int currentUser;
+    private UsersManage usersManage;
 
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        for (int i = 0; i < UsersManage.UsersList.size(); i++){
+            if(UsersManage.UsersList.get(i).getId() == currentUser){
+                usersManage = UsersManage.UsersList.get(i);
+            }
+        }
         binding = FragmentRecordBinding.inflate(inflater, container, false);
         root = binding.getRoot();
         initWidgets();
         OrdersManage.orderArrayList.clear();
         noteListView = binding.orderListView;
+        currentUser = ((Session) this.getActivity().getApplication()).getSomeVariable();
         loadFromDBToMemory();
         if(choice == 0) {
             setOrderOngoingAdapter();
@@ -81,15 +90,30 @@ public class RecordFragment extends Fragment {
 
 
     private void setOrderOngoingAdapter( ) {
-        AdapterOrder noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.OngoingOrder());
+        AdapterOrder noteAdapter;
+        if(usersManage.getRole().equals("Customer")) {
+            noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.OngoingOrder(currentUser));
+        }else{
+            noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.OngoingOrderByThisPerson(currentUser));
+        }
         noteListView.setAdapter(noteAdapter);
     }
     private void setOrderCompletedAdapter( ) {
-        AdapterOrder noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.CompletedOrder());
+        AdapterOrder noteAdapter;
+        if(usersManage.getRole().equals("Customer")) {
+            noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.CompletedOrder(currentUser));
+        }else{
+            noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.CompletedOrderByThisPerson(currentUser));
+        }
         noteListView.setAdapter(noteAdapter);
     }
     private void setOrderCancelledAdapter( ) {
-        AdapterOrder noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.CancelledOrder());
+        AdapterOrder noteAdapter;
+        if(usersManage.getRole().equals("Customer")) {
+            noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.CancelledOrder(currentUser));
+        }else{
+            noteAdapter = new AdapterOrder(getActivity().getApplicationContext(), OrdersManage.CancelledOrderByThisPerson(currentUser));
+        }
         noteListView.setAdapter(noteAdapter);
     }
     private void loadFromDBToMemory() {

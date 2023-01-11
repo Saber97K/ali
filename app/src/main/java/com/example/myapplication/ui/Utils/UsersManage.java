@@ -23,9 +23,9 @@ public class UsersManage {
     private String phoneNumber;
     private int activeOrder;
     private Bitmap image;
-    //add variable for OTP (string)
+    private String otp;
 
-    public UsersManage(int id, String role, String email, String password, String birthday, String name, String location, String gender, String phoneNumber, int activeOrder, Bitmap image) {
+    public UsersManage(int id, String role, String email, String password, String birthday, String name, String location, String gender, String phoneNumber, int activeOrder, Bitmap image, String otp) {
         this.id = id;
         this.role = role;
         this.email = email;
@@ -37,7 +37,7 @@ public class UsersManage {
         this.phoneNumber = phoneNumber;
         this.activeOrder = activeOrder;
         this.image = image;
-        //add OTP
+        this.otp = otp;
     }
 
     public Bitmap getImage() {
@@ -114,6 +114,10 @@ public class UsersManage {
         return phoneNumber;
     }
 
+    public String getRole() { return role; }
+
+    public String getOtp() { return otp; }
+
     public static void setUsersList(ArrayList<UsersManage> usersList) {
         UsersList = usersList;
     }
@@ -150,11 +154,7 @@ public class UsersManage {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getRole() {
-        return role;
-    }
+    public void setRole(String role) { this.role = role; }
 
-    public void setRole(String role) {
-        this.role = role;
-    }
+    public void setOtp(String otp) {   this.otp = otp; }
 }
