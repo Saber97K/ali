@@ -29,7 +29,7 @@ import java.text.SimpleDateFormat;
 public class SQLiteManager extends SQLiteOpenHelper {
     private static SQLiteManager sqLiteManager;
 
-    private static final String DATABASE_NAME = "ProjBase";
+    private static final String DATABASE_NAME = "ProjBas";
     private static final int DATABASE_VERSION = 1;
 
     //
