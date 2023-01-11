@@ -65,19 +65,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/GenderEDIT"
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="36dp"
-        android:hint="Gender"
-        android:minWidth="100dp"
-        android:minHeight="30dp"
-        android:text=""
-        android:textColor="@color/black"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/UploadPhoto"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Phone_NN" />
+        app:layout_constraintTop_toBottomOf="@+id/Phone_NN">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/maleButton"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/left_order_button_selector"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:gravity="center"
+            android:onClick="rdButton1"
+            android:text="Male"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/femaleButton"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/right_order_button_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:onClick="rdButton1"
+            android:text="Female"
+            android:textColor="@color/black" />
+    </RadioGroup>
 
     <EditText
         android:id="@+id/Phone_NN"
@@ -142,5 +166,18 @@
         android:src="@drawable/gender_icon"
         app:layout_constraintEnd_toStartOf="@+id/GenderEDIT"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="341dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+        android:onClick="backButton4"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,12 @@
 package com.example.myapplication.GeneralModule;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatRadioButton;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +26,7 @@ public class RegisterPage2 extends AppCompatActivity {
     private Button dateButton;
     private DatePickerDialog datePickerDialog;
     private String role,name,email,password ,phone , address, gender, date;
+    private AppCompatRadioButton rbMale, rbFemale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class RegisterPage2 extends AppCompatActivity {
         password = bundle.getString("password");
         initWidgets();
         date = getTodaysDate();
+        gender = "Male";
     }
 
     private void initWidgets() {
@@ -44,9 +48,30 @@ public class RegisterPage2 extends AppCompatActivity {
         phoneEdit = findViewById(R.id.Phone_NN);
         GenderEdit = findViewById(R.id.GenderEDIT);
         dateButton = findViewById(R.id.dateButton2);
+        rbFemale = findViewById(R.id.femaleButton);
+        rbMale = findViewById(R.id.maleButton);
         dateButton.setText(getTodaysDate());
         initDatePicker();
 
+    }
+    public void rdButton1(View view) {
+        boolean isSelected = ((AppCompatRadioButton)view).isChecked();
+        switch (view.getId()){
+            case R.id.maleButton:
+                if(isSelected){
+                    rbMale.setTextColor(Color.WHITE);
+                    rbFemale.setTextColor(Color.BLACK);
+                    gender = "Male";
+                }
+                break;
+            case R.id.femaleButton:
+                if(isSelected){
+                    rbFemale.setTextColor(Color.WHITE);
+                    rbMale.setTextColor(Color.BLACK);
+                    gender = "Female";
+                }
+                break;
+        }
     }
 
 
@@ -58,7 +83,6 @@ public class RegisterPage2 extends AppCompatActivity {
         Intent intent = new Intent(this, UploadImage.class);
         address = String.valueOf(addressEdit.getText());
         phone = String.valueOf(phoneEdit.getText());
-        gender = String.valueOf(GenderEdit.getText());
 
         if(address.isEmpty()){
             Toast.makeText(this, "Address can't be empty", Toast.LENGTH_SHORT).show();
@@ -116,5 +140,10 @@ public class RegisterPage2 extends AppCompatActivity {
     }
 
 
-
+    public void backButton4(View view) {
+        Intent first = new Intent(this, RegisterPage.class);
+        first.putExtra("text" , role);
+        finish();
+        startActivity(first);
+    }
 }

@@ -55,4 +55,11 @@ public class RegisterPage extends AppCompatActivity {
             startActivity(first);
         }
     }
+
+    public void backButton3(View view) {
+        Intent first = new Intent(this, MainLobbyRegistration.class);
+        finish();
+        startActivity(first);
+
+    }
 }

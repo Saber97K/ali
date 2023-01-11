@@ -110,4 +110,14 @@ public class UploadImage extends AppCompatActivity {
         }
 
     }
+
+    public void backButton5(View view) {
+        Intent intent = new Intent(this, RegisterPage.class);
+        intent.putExtra("text", role);
+
+        finish();
+        startActivity(intent);
+
+
+    }
 }
