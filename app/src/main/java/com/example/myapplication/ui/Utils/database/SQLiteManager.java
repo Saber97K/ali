@@ -133,7 +133,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
                     .append(USERS_ROLE).append(" TEXT, ").append(USERS_BIRTHDAY).append(" TEXT, ")
                     .append(USERS_LOCATION).append(" TEXT, ").append(USERS_Gender).append(" TEXT, ")
                     .append(USERS_PHONE_NUMBER).append(" TEXT, ").append(USERS_ACTIVE_ORDER).append(" INT, ")
-                    .append(USERS_IMAGE).append(" BLOB, ").append(USERS_OTP).append("TEXT)");
+                    .append(USERS_IMAGE).append(" BLOB, ").append(USERS_OTP).append(" TEXT)");
 
             sqLiteDatabase.execSQL(UserSql.toString());
         } catch (SQLiteException e) {

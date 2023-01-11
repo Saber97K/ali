@@ -73,7 +73,7 @@ public class OrderCategories extends Fragment {
                   CategoryManage selectedNode = (CategoryManage) noteListView.getItemAtPosition(position);
                   Intent editNodeIntent = new Intent(getActivity().getApplicationContext(), OrderCreate.class);
                   editNodeIntent.putExtra("category", selectedNode.getText());
-                  getActivity().finish();
+
                   startActivity(editNodeIntent);
               }
           });
