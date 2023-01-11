@@ -19,7 +19,7 @@
         android:id="@+id/Login_Button"
         android:layout_width="154dp"
         android:layout_height="66dp"
-        android:layout_marginTop="532dp"
+        android:layout_marginTop="539dp"
         android:fontFamily="sans-serif"
         android:text="Login"
         android:textAlignment="center"
@@ -39,7 +39,7 @@
         android:id="@+id/SignUp_Button"
         android:layout_width="154dp"
         android:layout_height="66dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="13dp"
         android:backgroundTint="#FDD184"
         android:fontFamily="sans-serif"
         android:text="Sign Up"
@@ -66,36 +66,35 @@
 
     <TextView
         android:id="@+id/Des"
-        android:layout_width="75dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="96dp"
-
-        android:layout_marginTop="124dp"
-        android:text="Des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:layout_marginStart="130dp"
+        android:text="DeS"
         android:textAlignment="textEnd"
-        android:textColor="#FA3131"
-        android:textSize="30sp"
+        android:textColor="@color/red"
+        android:textSize="40sp"
+        android:textStyle="bold"
 
-        app:layout_constraintHeight_percent="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.9" />
 
     <TextView
         android:id="@+id/Tiny"
-        android:layout_width="75dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="96dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="115dp"
         android:text="Tiny."
         android:textAlignment="viewStart"
-        android:textColor="#000000"
-        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        android:textStyle="bold"
 
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/Des"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.9" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

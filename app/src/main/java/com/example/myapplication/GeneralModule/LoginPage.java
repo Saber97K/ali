@@ -145,7 +145,7 @@ public class LoginPage extends AppCompatActivity {
     }
 
     public void BackButton2(View view) {
-        Intent back = new Intent(this, MainLobbyRegistration.class);
+        Intent back = new Intent(this, MainLobby.class);
         finish();
         startActivity(back);
     }
