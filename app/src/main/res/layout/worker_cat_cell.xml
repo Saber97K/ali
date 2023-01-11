@@ -18,6 +18,6 @@
         android:padding="3dp"
         android:text="Category Text"
         android:textAlignment="center"
-        android:textColor="#fff" />
+        />
 
 </LinearLayout>
