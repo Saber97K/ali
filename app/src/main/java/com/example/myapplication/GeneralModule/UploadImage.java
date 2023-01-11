@@ -3,6 +3,8 @@ package com.example.myapplication.GeneralModule;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -15,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.added_wallet.MainActivity6_wallet;
 import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
 
@@ -96,6 +99,25 @@ public class UploadImage extends AppCompatActivity {
             int id = UsersManage.UsersList.size();
             if (imageView.getDrawable() != null && imageToScore!= null) {
                 otp = generateRandomPassword(8);
+
+                //alert dialog to inform OTP code
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("OTP for Password Reset");
+                builder.setMessage("This is your OTP code '" + otp + "' make sure to write it down so you can restore your password if you forgotten it");
+                // add buttons and their events
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do something when the "OK" button is clicked
+                    }
+                });
+                // create and show the Alert Dialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+                //end of alert dialog code
+
+
                 UsersManage user = new UsersManage(id, role, email, password, date, name, address, gender, phone, -1, imageToScore, otp);
                 UsersManage.UsersList.add(user);
                 sqLiteManager.addUserToDatabase(user);

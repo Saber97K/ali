@@ -63,6 +63,10 @@ public class RegisterPage2 extends AppCompatActivity {
         if(address.isEmpty()){
             Toast.makeText(this, "Address can't be empty", Toast.LENGTH_SHORT).show();
         }
+        else if(phone.isEmpty()){
+            Toast.makeText(this, "Phone number can't be empty", Toast.LENGTH_SHORT).show();
+        }
+
         else {
             intent.putExtra("address", address);
             intent.putExtra("phone", phone);
