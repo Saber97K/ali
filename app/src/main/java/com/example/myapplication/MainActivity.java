@@ -127,7 +127,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     protected void onPause() {
-        mSensorManager.unregisterListener(this);
         super.onPause();
     }
 }

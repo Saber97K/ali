@@ -29,7 +29,7 @@ import java.text.SimpleDateFormat;
 public class SQLiteManager extends SQLiteOpenHelper {
     private static SQLiteManager sqLiteManager;
 
-    private static final String DATABASE_NAME = "ProjBase";
+    private static final String DATABASE_NAME = "ProjBas";
     private static final int DATABASE_VERSION = 1;
 
     //
@@ -133,7 +133,7 @@ public class SQLiteManager extends SQLiteOpenHelper {
                     .append(USERS_ROLE).append(" TEXT, ").append(USERS_BIRTHDAY).append(" TEXT, ")
                     .append(USERS_LOCATION).append(" TEXT, ").append(USERS_Gender).append(" TEXT, ")
                     .append(USERS_PHONE_NUMBER).append(" TEXT, ").append(USERS_ACTIVE_ORDER).append(" INT, ")
-                    .append(USERS_IMAGE).append(" BLOB, ").append(USERS_OTP).append("TEXT)");
+                    .append(USERS_IMAGE).append(" BLOB, ").append(USERS_OTP).append(" TEXT)");
 
             sqLiteDatabase.execSQL(UserSql.toString());
         } catch (SQLiteException e) {
