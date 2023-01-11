@@ -4,35 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".GeneralModule.UploadImage">
 
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_width="256dp"
+        android:layout_height="251dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="115dp"
+        android:background="@drawable/user_pic"
         android:onClick="chooseImage"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_baseline_anchor_24" />
+        android:scaleType="centerCrop" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Move Next"
         android:id="@+id/moveNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/image"
-        android:onClick="Register2PageGo"/>
+        android:layout_centerInParent="true"
+
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/bright_pink"
+        android:onClick="Register2PageGo"
+        android:text="  Choose a picture  "
+        android:textAllCaps="false"
+        android:textSize="22sp"
+        android:textStyle="italic" />
 
     <ImageButton
         android:id="@+id/imageButton5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="363dp"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_24"
-        android:onClick="backButton5"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="24dp"
+        android:background="#00000000"
+        android:onClick="backButton5"
+        app:srcCompat="@drawable/icon_left_arrow"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="26dp" />
 
 
 </RelativeLayout>
