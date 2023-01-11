@@ -9,12 +9,14 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
+import com.example.myapplication.Session;
 import com.example.myapplication.added_wallet.MainActivity3_wallet;
 import com.example.myapplication.added_wallet.MainActivity_wallet;
 
 
 public class Success extends AppCompatActivity {
     private String caseCustomer;
+    private int currentUser;
 
 
 
@@ -28,6 +30,7 @@ public class Success extends AppCompatActivity {
             caseCustomer = bundle.getString("text");
 
         }
+        currentUser = ((Session) this.getApplication()).getSomeVariable();
 
 }
 

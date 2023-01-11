@@ -46,7 +46,6 @@ public class RegisterPage2 extends AppCompatActivity {
     private void initWidgets() {
         addressEdit = findViewById(R.id.AddressEDIT);
         phoneEdit = findViewById(R.id.Phone_NN);
-        GenderEdit = findViewById(R.id.GenderEDIT);
         dateButton = findViewById(R.id.dateButton2);
         rbFemale = findViewById(R.id.femaleButton);
         rbMale = findViewById(R.id.maleButton);
