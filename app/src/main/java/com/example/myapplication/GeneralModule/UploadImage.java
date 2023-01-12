@@ -109,6 +109,11 @@ public class UploadImage extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // do something when the "OK" button is clicked
+                        UsersManage user = new UsersManage(id, role, email, password, date, name, address, gender, phone, -1, imageToScore, otp);
+                        UsersManage.UsersList.add(user);
+                        sqLiteManager.addUserToDatabase(user);
+                        finish();
+                        startActivity(first);
                     }
                 });
                 // create and show the Alert Dialog
@@ -117,12 +122,6 @@ public class UploadImage extends AppCompatActivity {
 
                 //end of alert dialog code
 
-
-                UsersManage user = new UsersManage(id, role, email, password, date, name, address, gender, phone, -1, imageToScore, otp);
-                UsersManage.UsersList.add(user);
-                sqLiteManager.addUserToDatabase(user);
-                finish();
-                startActivity(first);
             }else {
                 Toast.makeText(this, "Please add an image" , Toast.LENGTH_LONG).show();
             }

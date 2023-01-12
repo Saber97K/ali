@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -25,6 +26,9 @@ import com.example.myapplication.ui.Utils.OrdersManage;
 import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Calendar;
 
 public class OrderCreate extends AppCompatActivity {
@@ -33,6 +37,7 @@ public class OrderCreate extends AppCompatActivity {
     private Button dateButton;
     private DatePickerDialog datePickerDialog;
     private String date, type,category;
+    private Date d_date,currentDate;
     private int currentUser;
     private UsersManage usersManage;
     private ManageWallet manageWallet;
@@ -60,7 +65,7 @@ public class OrderCreate extends AppCompatActivity {
     private String getTodayDate() {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
+        int month = calendar.get(Calendar.MONTH)+1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         return makeDateString(day,month,year);
     }
@@ -69,7 +74,7 @@ public class OrderCreate extends AppCompatActivity {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month + 1;
+                month = month+1;
                 String date1 = makeDateString(day, month,year);
                 dateButton.setText(date1);
                 date = date1;
@@ -106,15 +111,11 @@ public class OrderCreate extends AppCompatActivity {
         switch (view.getId()){
             case R.id.FaceToFace:
                 if(isSelected){
-                    rbLeft.setTextColor(Color.WHITE);
-                    rbRight.setTextColor(Color.BLACK);
                     type = "face-to-face";
                 }
                 break;
             case R.id.online:
                 if(isSelected){
-                    rbRight.setTextColor(Color.WHITE);
-                    rbLeft.setTextColor(Color.BLACK);
                     type = "online";
                 }
                 break;
@@ -175,7 +176,19 @@ public class OrderCreate extends AppCompatActivity {
             String title = String.valueOf(titleEditText.getText());
             if(desc.isEmpty() || title.isEmpty()){
                 Toast.makeText(this, "Title & Description must be filled", Toast.LENGTH_SHORT).show();
+                checker = false;
             }
+            try {
+                d_date = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+                currentDate = new SimpleDateFormat("dd/MM/yyyy").parse(getTodayDate());
+                if(currentDate.compareTo(d_date) > 0){
+                        Toast.makeText(this, "Date must be in the future or today", Toast.LENGTH_SHORT).show();
+                        checker = false;
+                };
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
 
             try {
                 price = Double.parseDouble(String.valueOf(priceEditText.getText()));

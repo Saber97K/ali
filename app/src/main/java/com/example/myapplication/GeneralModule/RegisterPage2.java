@@ -106,8 +106,8 @@ public class RegisterPage2 extends AppCompatActivity {
 
         private String getTodaysDate() {
         Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR) - 18;
+        int month = calendar.get(Calendar.MONTH)+1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         return makeDateString(day,month,year);
     }

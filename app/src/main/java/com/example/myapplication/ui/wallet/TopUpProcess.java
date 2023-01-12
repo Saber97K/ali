@@ -53,24 +53,24 @@ public class TopUpProcess extends AppCompatActivity {
 
     }
     public void button1btn(View view) {
-        enterTop.setText("10");
+        enterTop.setText("50");
 
     }
     public void button2btn(View view) {
-        enterTop.setText("30");
-    }
-    public void button3btn(View view) {
-        enterTop.setText("50");
-    }
-    public void button4btn(View view) {
         enterTop.setText("100");
     }
-    public void button5btn(View view) {
+    public void button3btn(View view) {
+        enterTop.setText("150");
+    }
+    public void button4btn(View view) {
         enterTop.setText("200");
+    }
+    public void button5btn(View view) {
+        enterTop.setText("250");
     }
 
     public void button6btn(View view) {
-        enterTop.setText("500");
+        enterTop.setText("300");
     }
 
 
