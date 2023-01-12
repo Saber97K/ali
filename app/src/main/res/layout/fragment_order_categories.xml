@@ -18,33 +18,33 @@
         android:theme="?actionBarTheme">
 
         <TextView
-            android:id="@+id/nn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="DeS"
-            android:textColor="@color/red"
-            android:textSize="35sp"
-            android:textStyle="bold" />
-        <TextView
             android:id="@+id/nn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Tiny"
+            android:text="Create order"
             android:textColor="@color/black"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
 
     </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#000"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:background="@drawable/shape_guide">
+        android:background="@drawable/shape_guide"
+        android:paddingTop="20dp">
+
         <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
@@ -55,13 +55,20 @@
             android:textStyle="bold"
             android:textSize="22sp"/>
         <TextView
+            android:id="@+id/textLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="———————————————————————"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="21sp"/>
+        <TextView
             android:id="@+id/textView8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Please select one from the following"
+            android:text="Please select one type from the following"
             android:gravity="center_horizontal"
             android:textColor="@color/black"
-            android:layout_marginTop="15dp"
             android:textSize="21sp"/>
     </LinearLayout>
 

@@ -30,11 +30,11 @@
         android:layout_height="match_parent"
         android:text="CategoryName"
         android:maxLines="1"
-        android:textColor="@color/darkGrey"
+        android:textColor="@color/black"
         android:textSize="22sp"
         android:background="@drawable/shape_category"
         android:gravity="center_horizontal"
-        android:padding="10dp"
+        android:padding="20dp"
 
 
 

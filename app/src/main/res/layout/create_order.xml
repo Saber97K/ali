@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.example.myapplication.ui.order.OrderCreate">
 
 
@@ -13,198 +14,227 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?actionBarSize"
-        android:theme="?actionBarTheme">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:text="Create"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
+        android:theme="?actionBarTheme"
+        android:background="@color/bright_pink">
 
         <ImageButton
             android:id="@+id/backProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:layout_marginTop="5dp"
             android:backgroundTint="@color/white"
             android:contentDescription="@string/backProfile"
             android:minHeight="48dp"
             android:onClick="backOrder"
-            app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+            android:background="#00000000"
+            app:srcCompat="@drawable/icon_left_arrow" />
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Order detail"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
-
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="4dp"
+        android:background="#000"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:background="#000"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Type"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/darkGrey"
-        android:textStyle="bold"
-        android:layout_marginLeft="20sp"
-        android:layout_gravity="start"/>
-
-    <RadioGroup
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/FaceToFace"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Face-to-face"
-            android:gravity="center"
-            android:checked="true"
-            android:button="@android:color/transparent"
-            android:layout_weight="1"
-            android:background="@drawable/left_order_button_selector"
-            android:onClick="rdButton"
-            android:layout_marginRight="5dp"
-            />
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/online"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Online"
-            android:gravity="center"
-            android:button="@android:color/transparent"
-            android:layout_weight="1"
-            android:background="@drawable/right_order_button_selector"
-            android:onClick="rdButton"
-            />
-    </RadioGroup>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/darkGrey"
-        android:textStyle="bold"
-        android:layout_marginLeft="20sp"
-        android:layout_gravity="start"/>
-
-    <Button
-        android:id="@+id/dateButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_gravity="start"
-        android:layout_margin="20dp"
-        android:backgroundTint="@color/bright_pink"
-        android:text="JAN 01 2023"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:onClick="DataChoose"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price"
-        android:textSize="20sp"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/darkGrey"
-        android:textStyle="bold"
-        android:layout_marginLeft="20sp"
-        android:layout_gravity="start"/>
-
-    <EditText
-        android:id="@+id/PriceEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:maxLines="1"
-        android:textColor="@color/darkGrey"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20sp"
-        android:layout_gravity="center"
-        />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginLeft="20sp"
-        android:layout_marginTop="5dp"
-        android:text="Title"
-        android:textColor="@color/darkGrey"
-        android:textSize="20sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/titleEditText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20sp"
-        android:maxLines="1"
-        android:textColor="@color/darkGrey"
-        android:textSize="20sp" />
+        android:gravity="center_horizontal"
+        android:paddingTop="40dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="30dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Description"
-        android:textSize="20sp"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/darkGrey"
-        android:textStyle="bold"
-        android:layout_marginLeft="20sp"
-        android:layout_gravity="start"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type"
+            android:textSize="22sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/darkGrey"
+            android:textStyle="bold"
+            android:layout_marginRight="35sp"
+            android:layout_gravity="start"/>
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/FaceToFace"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Face-to-face"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:checked="true"
+                android:button="@android:color/transparent"
+                android:layout_weight="1"
+                android:background="@drawable/left_order_button_selector"
+                android:onClick="rdButton"
+                android:layout_marginRight="15dp"
+                />
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/online"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:text="Online"
+                android:gravity="center"
+                android:button="@android:color/transparent"
+                android:layout_weight="1"
+                android:background="@drawable/right_order_button_selector"
+                android:onClick="rdButton"
+                />
+        </RadioGroup>
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/descriptionEditText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:minLines="2"
-        android:textColor="@color/darkGrey"
-        android:textSize="20sp" />
+        android:gravity="center_horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="22sp"
+            android:textColor="@color/darkGrey"
+            android:textStyle="bold"
+            android:layout_gravity="start"/>
+
+        <Button
+            android:id="@+id/dateButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="35dp"
+            android:backgroundTint="@color/bright_pink"
+            android:text="JAN 01 2023"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:onClick="DataChoose"
+            android:padding="10dp"/>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:textSize="22sp"
+            android:textColor="@color/darkGrey"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/PriceEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:layout_marginStart="31dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="30dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="Title"
+            android:textColor="@color/darkGrey"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/titleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="22sp"
+            android:textColor="@color/darkGrey"
+            android:textStyle="bold"
+            android:layout_gravity="start"/>
+
+
+        <EditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:minLines="2"
+            android:textColor="@color/darkGrey"
+            android:textSize="18sp" />
+    </LinearLayout>
+
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="154dp"
+        android:layout_height="66dp"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
-        android:background="@drawable/each_button"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="#FDD184"
         android:onClick="Publish"
         android:text="Publish"
         android:textColor="@color/darkGrey"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold|italic" />
+
 
 
 </LinearLayout>
