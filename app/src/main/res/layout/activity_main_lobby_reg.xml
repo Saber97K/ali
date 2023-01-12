@@ -64,12 +64,12 @@
         android:id="@+id/Des"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
-        android:layout_marginStart="130dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="60dp"
         android:text="DeS"
         android:textAlignment="textEnd"
         android:textColor="@color/red"
-        android:textSize="40sp"
+        android:textSize="60sp"
         android:textStyle="bold"
 
         app:layout_constraintStart_toStartOf="parent"
@@ -80,28 +80,34 @@
         android:id="@+id/Tiny"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
-        android:layout_marginEnd="115dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="60dp"
         android:text="Tiny."
         android:textAlignment="viewStart"
         android:textColor="@color/black"
-        android:textSize="40sp"
-        android:textStyle="bold"
+        android:textSize="60sp"
 
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/Des"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.9" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#00000000"
-        android:onClick="ImageButton1"
-        app:srcCompat="@drawable/icon_left_arrow"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="26dp" />
+        android:padding="20dp">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:onClick="ImageButton1"
+            app:srcCompat="@drawable/icon_left_arrow" />
+    </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

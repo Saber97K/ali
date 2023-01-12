@@ -7,6 +7,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -58,14 +59,16 @@ public class RegisterPage2 extends AppCompatActivity {
         switch (view.getId()){
             case R.id.maleButton:
                 if(isSelected){
-                    rbMale.setTextColor(Color.WHITE);
+                    rbMale.setTextColor(getResources().getColor(R.color.orange));
+                    rbMale.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     rbFemale.setTextColor(Color.BLACK);
                     gender = "Male";
                 }
                 break;
             case R.id.femaleButton:
                 if(isSelected){
-                    rbFemale.setTextColor(Color.WHITE);
+                    rbFemale.setTextColor(getResources().getColor(R.color.orange));
+                    rbFemale.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     rbMale.setTextColor(Color.BLACK);
                     gender = "Female";
                 }
@@ -149,4 +152,5 @@ public class RegisterPage2 extends AppCompatActivity {
         finish();
         startActivity(first);
     }
+
 }

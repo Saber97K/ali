@@ -1,198 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:clickable="true"
-    android:focusable="true"
     tools:context=".GeneralModule.RegisterPage2"
+    android:orientation="vertical"
     >
 
-
-    <Button
-        android:id="@+id/dateButton2"
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="120dp"
+        android:background="@color/bright_pink"
+        android:minHeight="?actionBarSize"
+        android:elevation="10dp"
+        android:theme="?actionBarTheme">
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            app:srcCompat="@drawable/icon_left_arrow"
+            android:onClick="backButton4"/>
+
+        <TextView
+            android:id="@+id/InfoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Basic Information"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:columnCount="2"
+        android:rowCount="3"
         android:layout_marginTop="50dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_gravity="center">
 
-        android:layout_marginBottom="102dp"
-        android:background="@drawable/enter_email"
-        android:onClick="DataChoose"
-        android:padding="10dp"
-        android:text="Birthday"
-        android:textAllCaps="false"
-        android:textColor="@color/grey"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InfoTitle"
-        app:layout_constraintVertical_bias="0.222" />
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="35dp"
+            android:layout_height="38dp"
+            android:src="@drawable/icon_birthday"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="50dp"/>
 
-    <TextView
-    android:id="@+id/InfoTitle"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="48dp"
-    android:layout_marginTop="90dp"
-    android:text="Basic Information"
-    android:textColor="@color/black"
-    android:textSize="30dp"
-        android:textStyle="bold"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/dateButton2"
+            android:layout_width="233dp"
+            android:layout_height="50dp"
+            android:background="@drawable/enter_email"
+            android:onClick="DataChoose"
+            android:text="Birthday"
+            android:textAllCaps="false"
+            android:textColor="@color/grey"
+            android:textSize="19sp" />
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="35dp"
+            android:layout_height="38dp"
+            android:src="@drawable/location_icon"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="50dp"/>
 
-    <EditText
-        android:id="@+id/AddressEDIT"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginTop="276dp"
-        android:hint="Address"
-        android:background="@drawable/enter_email"
-        android:ems="0"
-        android:minWidth="100dp"
-        android:minHeight="30dp"
-        android:text=""
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginEnd="48dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/UploadPhoto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Phone_NN">
-
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/maleButton"
-            android:layout_width="10dp"
-            android:layout_height="35dp"
-            android:layout_marginRight="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/left_order_button_selector"
-            android:button="@android:color/transparent"
-            android:checked="true"
-            android:gravity="center"
-            android:onClick="rdButton1"
-            android:text="Male"
+        <EditText
+            android:id="@+id/AddressEDIT"
+            android:layout_width="233dp"
+            android:layout_height="50dp"
+            android:hint="Address"
+            android:background="@drawable/enter_email"
             android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/femaleButton"
-            android:layout_width="10dp"
-            android:layout_height="35dp"
-            android:layout_weight="1"
-            android:background="@drawable/right_order_button_selector"
-            android:button="@android:color/transparent"
-            android:gravity="center"
-            android:onClick="rdButton1"
-            android:text="Female"
-            android:textColor="@color/black" />
-    </RadioGroup>
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="33dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/phone_icon"
+            />
 
-    <EditText
-        android:id="@+id/Phone_NN"
+        <EditText
+            android:id="@+id/Phone_NN"
+            android:layout_width="233dp"
+            android:layout_height="50dp"
+            android:hint="Phone Number"
+            android:background="@drawable/enter_email"
+            android:textColor="@color/black"/>
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="33dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="40dp"
+            android:src="@drawable/gender_icon"/>
+
+        <RadioGroup
+            android:layout_width="233dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/maleButton"
+                android:layout_width="10dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/left_order_button_selector"
+                android:button="@android:color/transparent"
+                android:checked="true"
+                android:gravity="center"
+                android:onClick="rdButton1"
+                android:text="Male"
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/femaleButton"
+                android:layout_width="10dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/right_order_button_selector"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:onClick="rdButton1"
+                android:text="Female"
+                android:textColor="@color/black" />
+        </RadioGroup>
+
+    </GridLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:layout_marginStart="120dp"
-        android:layout_marginTop="36dp"
-        android:hint="Phone Number"
-        android:layout_marginEnd="48dp"
-        android:minWidth="100dp"
-        android:minHeight="30dp"
-        android:text=""
-        android:background="@drawable/enter_email"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AddressEDIT" />
-
-    <Button
-        android:id="@+id/UploadPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-
-        android:layout_marginBottom="88dp"
-        android:backgroundTint="#FDD184"
-        android:onClick="ContinueRegister"
-        android:text=">"
-        android:textColor="@color/black"
-        android:textSize="30sp"
+        android:layout_marginEnd="50dp"
+        >
 
 
-        android:textStyle="bold"
-
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="35dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="196dp"
-        android:layout_marginEnd="36dp"
-        android:src="@drawable/icon_birthday"
-        app:layout_constraintEnd_toStartOf="@+id/AddressEDIT"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="35dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="284dp"
-        android:layout_marginEnd="36dp"
-        android:src="@drawable/location_icon"
-        app:layout_constraintEnd_toStartOf="@+id/AddressEDIT"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="33dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="36dp"
-        android:src="@drawable/phone_icon"
-        app:layout_constraintEnd_toStartOf="@+id/Phone_NN"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="36dp"
-        android:src="@drawable/gender_icon"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        tools:layout_editor_absoluteX="52dp"
-        tools:ignore="MissingConstraints" />
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00000000"
-        app:srcCompat="@drawable/icon_left_arrow"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="26dp"
-        android:onClick="backButton4"/>
+        <Button
+            android:id="@+id/UploadPhoto"
+            android:layout_width="130dp"
+            android:layout_height="66dp"
+            android:layout_alignParentLeft="true"
+            android:backgroundTint="#FDD184"
+            android:onClick="ContinueRegister"
+            android:text="Next"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            app:cornerRadius="20dp" />
+    </RelativeLayout>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

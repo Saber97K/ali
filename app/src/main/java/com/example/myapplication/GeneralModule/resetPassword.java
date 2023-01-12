@@ -73,4 +73,10 @@ public class resetPassword extends AppCompatActivity {
 
 
     }
+
+    public void backFromReset(View view) {
+        Intent back = new Intent(this, ForgotPassword.class);
+        finish();
+        startActivity(back);
+    }
 }
