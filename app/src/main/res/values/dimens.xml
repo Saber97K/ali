@@ -5,4 +5,5 @@
     <dimen name="button_height">25dp</dimen>
     <dimen name="button_front_size_samll">15sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="to_top">30dp</dimen>
 </resources>

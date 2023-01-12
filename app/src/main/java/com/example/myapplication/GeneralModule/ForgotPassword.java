@@ -81,4 +81,9 @@ public class ForgotPassword extends AppCompatActivity {
 
 
     }
+    public void backFromForgot(View view) {
+        Intent back = new Intent(this, LoginPage.class);
+        finish();
+        startActivity(back);
+    }
 }
