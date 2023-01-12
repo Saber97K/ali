@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import com.example.myapplication.R;
@@ -22,6 +26,8 @@ public class WalletAddingActivity extends AppCompatActivity {
     private SQLiteManager sqLiteManager;
     private ManageWallet manageWallet;
     private UsersManage usersManage;
+    private EditText editText;
+    private CheckBox checkBox;
 
 
     @Override
@@ -46,6 +52,18 @@ public class WalletAddingActivity extends AppCompatActivity {
                 usersManage = UsersManage.UsersList.get(i);
             }
         }
+        editText = findViewById(R.id.editTextPassword);
+        checkBox = findViewById(R.id.checkBoxShowPassword);
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    editText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
 
 
 
@@ -68,4 +86,12 @@ public class WalletAddingActivity extends AppCompatActivity {
         finish();
         startActivity(intent);
     }
+
+    public void backFromBankInfo(View view) {
+        Intent intent= new Intent();
+        intent.setClass(this,WalletFragment.class);
+        startActivity(intent);
+    }
+
+
 }

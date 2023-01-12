@@ -68,7 +68,7 @@
                 android:minHeight="40dp"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:gravity="center_horizontal"
                 android:textStyle="bold"/>
             <LinearLayout
@@ -112,7 +112,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="20dp">
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
@@ -223,7 +223,7 @@
             android:rowCount="2"
             android:columnCount="2"
             android:layout_marginStart="70dp">
-            <TextView
+            <!--<TextView
                 android:id="@+id/Sound_Notif"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -238,7 +238,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                android:layout_marginStart="45dp"/>
+                android:layout_marginStart="45dp"/>-->
 
             <TextView
                 android:id="@+id/Shake_Screen"
@@ -264,7 +264,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp">
 

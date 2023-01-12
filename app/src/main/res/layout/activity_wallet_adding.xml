@@ -6,55 +6,126 @@
         android:layout_height="match_parent"
         tools:context=".ui.wallet.WalletAddingActivity"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:paddingTop="150dp"
         android:background="@color/white"
         android:id="@+id/fragment_container_view_tag1"
         >
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bright_pink"
+        android:minHeight="?actionBarSize"
+        android:elevation="10dp"
+        android:theme="?actionBarTheme">
+
+        <ImageButton
+            android:id="@+id/backFromBankInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:onClick="backFromBankInfo"
+            app:srcCompat="@drawable/icon_left_arrow"
+            />
 
         <TextView
             android:id="@+id/bankInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bankInfo"
+            android:text="Bank account infomation"
+            android:textSize="26dp"
             android:textColor="@color/black"
-            android:textSize="25sp"
             android:textStyle="bold"
-            android:layout_marginBottom="60dp"/>
+            android:layout_gravity="center_horizontal"/>
 
-        <EditText
-            android:id="@+id/editTextBankAccount"
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="50dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="35dp"
+        >
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number"
-            android:textSize="20sp"
-            android:hint="Bank Account Number"
+            android:text="Please enter your bank account"
+            android:textColor="@color/black"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/showTextfromLogin"
+            android:text="And enter your password to prove identity"
+            android:textColor="@color/grey"
+            android:textSize="18dp"
+            android:layout_marginTop="25dp"
             />
 
         <EditText
+            android:id="@+id/editTextBankAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Bank Account Number"
+            android:inputType="number"
+            android:layout_marginTop="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/enter_email"/>
+
+        <EditText
             android:id="@+id/editTextPassword"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Password"
-            android:textSize="20sp"
-            android:inputType="textPersonName"
-            android:layout_marginBottom="60dp"/>
+            android:inputType="textPassword"
+            android:layout_marginTop="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/enter_email"/>
+
+        <CheckBox
+            android:layout_marginStart="10dp"
+            android:text="show password"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxShowPassword"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:gravity="center">
 
         <Button
             android:id="@+id/confirmAddBankAcount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="154dp"
+            android:layout_height="66dp"
+            android:backgroundTint="#FDD184"
+            android:fontFamily="sans-serif"
             android:text="@string/confirm"
-            android:textAllCaps="false"
-            android:textSize="25sp"
-            android:enabled="true"
-            android:textColor="@color/black"
-            android:background="@drawable/shape_button"
-            android:onClick="ConfirmBank"/>
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            app:cornerRadius="20dp"
+            android:onClick="ConfirmBank"
+            />
 
+    </LinearLayout>
 
 
 

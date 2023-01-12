@@ -53,6 +53,7 @@ public class resetPassword extends AppCompatActivity {
         //check if they are the same
         Intent Main;
         if(password.equals(retypepassword)) {//same
+            startActivity(new Intent(this, LoginPage.class));
             Toast.makeText(this, "Password changed successfully", Toast.LENGTH_SHORT).show();
             //update new password in database
             loadFromDBToMemory();
@@ -65,7 +66,7 @@ public class resetPassword extends AppCompatActivity {
                 }
             }
             sqLiteManager.UpdateUser(usertoupdatepassword);
-            Main = new Intent(this, LoginPage.class);
+
         }
         else{//not same
             Toast.makeText(this, "Password doesn't match", Toast.LENGTH_SHORT).show();
