@@ -59,7 +59,7 @@ public class LoginPage extends AppCompatActivity {
         String email1 = String.valueOf(emailText.getText());
         String password1 = String.valueOf(passwordText.getText());
 
-        //check email format before procedding
+
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email1).matches()) {//invalid email
             Toast.makeText(this, "Email Invalid!", Toast.LENGTH_SHORT).show();
         }
@@ -149,4 +149,5 @@ public class LoginPage extends AppCompatActivity {
         finish();
         startActivity(back);
     }
+
 }

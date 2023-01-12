@@ -3,6 +3,7 @@ package com.example.myapplication.ui.record;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,6 @@ public class RecordFragment extends Fragment {
     private ListView noteListView;
     private AppCompatRadioButton ongoingButton, completedButton, cancelledButton;
     private View root;
-    private int choice = 0;
     private int currentUser;
     private UsersManage usersManage;
 
@@ -35,6 +35,11 @@ public class RecordFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        UsersManage.UsersList.clear();
+        OrdersManage.orderArrayList.clear();
+        loadFromDBToMemory();
+        currentUser = ((Session) getActivity().getApplication()).getSomeVariable();
+        Log.d("TAG", "onCreateView: " + currentUser);
         for (int i = 0; i < UsersManage.UsersList.size(); i++){
             if(UsersManage.UsersList.get(i).getId() == currentUser){
                 usersManage = UsersManage.UsersList.get(i);
@@ -43,13 +48,8 @@ public class RecordFragment extends Fragment {
         binding = FragmentRecordBinding.inflate(inflater, container, false);
         root = binding.getRoot();
         initWidgets();
-        OrdersManage.orderArrayList.clear();
         noteListView = binding.orderListView;
-        currentUser = ((Session) this.getActivity().getApplication()).getSomeVariable();
-        loadFromDBToMemory();
-        if(choice == 0) {
-            setOrderOngoingAdapter();
-        }
+        setOrderOngoingAdapter();
 
 
             AppCompatRadioButton btn1 = (AppCompatRadioButton) root.findViewById(R.id.ongoingRadio);
@@ -57,7 +57,7 @@ public class RecordFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                         setOrderOngoingAdapter();
-                    choice = 0;
+                    ((Session) getActivity().getApplication()).setChoice(0);
                     }
             });
 
@@ -66,7 +66,7 @@ public class RecordFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     setOrderCompletedAdapter();
-                    choice = 1;
+                    ((Session) getActivity().getApplication()).setChoice(1);
                 }
             });
 
@@ -75,7 +75,7 @@ public class RecordFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     setOrderCancelledAdapter();
-                   choice = 2 ;
+                    ((Session) getActivity().getApplication()).setChoice(2);
                 }
             });
 
@@ -119,31 +119,18 @@ public class RecordFragment extends Fragment {
     private void loadFromDBToMemory() {
         SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(getActivity());
         sqLiteManager.populateOrderListArray();
+        sqLiteManager.populateUserListArray();
     }
 
 
-    /*  private void setOnClickListener() {
-          noteListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-          {
-              @Override
-              public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
-              {
-                  Node selectedNode = (Node) noteListView.getItemAtPosition(position);
-                  Intent editNodeIntent = new Intent(getActivity().getApplicationContext(), OrdersActivity.class);
-                  editNodeIntent.putExtra(Node.NOTE_EDIT_EXTRA, selectedNode.getId());
-                  startActivity(editNodeIntent);
-              }
-          });
-      }
-
-     */
     @Override
     public void onResume()
     {
+
         super.onResume();
-        if(choice == 0){
+        if(((Session) getActivity().getApplication()).getChoice() == 0){
             setOrderOngoingAdapter();
-        }else if(choice == 1){
+        }else if(((Session) getActivity().getApplication()).getChoice() == 1){
             setOrderCompletedAdapter();
         }
         else {
@@ -152,9 +139,17 @@ public class RecordFragment extends Fragment {
 
     }
     @Override
+    public void onPause()
+    {
+        super.onPause();
+
+
+    }
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+
     }
 
 }

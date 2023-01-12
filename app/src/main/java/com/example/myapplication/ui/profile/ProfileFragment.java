@@ -20,6 +20,7 @@ import com.example.myapplication.databinding.FragmentProfileBinding;
 import com.example.myapplication.ui.Utils.RatingManage;
 import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
+import com.example.myapplication.ui.record.RecordFragment;
 
 import java.text.DecimalFormat;
 
@@ -59,6 +60,7 @@ public class ProfileFragment extends Fragment {
                                        public void onClick(View view) {
                                            Intent intent = new Intent(getActivity(), MainLobby.class);
                                            ((Session) getActivity().getApplication()).setSomeVariable(-1);
+                                           ((Session) getActivity().getApplication()).setChoice(0);
                                            UsersManage.UsersList.clear();
                                            getActivity().finish();
                                            startActivity(intent);
@@ -71,10 +73,11 @@ public class ProfileFragment extends Fragment {
                                       @Override
                                       public void onClick(View view) {
                                           Intent intent = new Intent(getActivity(), MainLobby.class);
+                                          getActivity().finish();
                                           deleteUserFromDB();
                                           ((Session) getActivity().getApplication()).setSomeVariable(-1);
+                                          ((Session) getActivity().getApplication()).setChoice(0);
                                           UsersManage.UsersList.clear();
-                                          getActivity().finish();
                                           startActivity(intent);
                                       }
                                   }

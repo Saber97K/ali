@@ -47,7 +47,7 @@ public class OrdersManage {
             ArrayList<OrdersManage> Ongoing = new ArrayList<>();
             for(OrdersManage order : orderArrayList)
             {
-                if(order.getStatus() == 0 && order.getUser_id() == current)
+                if(order.getStatus() == 0 && order.getUser_id() == current && order.getAccepted_user_id()!= -1)
                     Ongoing.add(order);
             }
 
@@ -65,6 +65,7 @@ public class OrdersManage {
 
         return Ongoing;
     }
+
     public static ArrayList<OrdersManage> OngoingOrderAvailable(int cat_id)
     {
         String categoryManage = "";

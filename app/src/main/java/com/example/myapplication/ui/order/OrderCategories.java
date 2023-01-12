@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
+import com.example.myapplication.Session;
 import com.example.myapplication.databinding.FragmentOrderCategoriesBinding;
 import com.example.myapplication.ui.Utils.CategoryAdapter;
 import com.example.myapplication.ui.Utils.CategoryManage;
@@ -24,6 +25,7 @@ public class OrderCategories extends Fragment {
     private FragmentOrderCategoriesBinding binding;
     private ListView noteListView;
     private View root;
+    private int currentUser;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -32,6 +34,8 @@ public class OrderCategories extends Fragment {
         root = binding.getRoot();
         CategoryManage.categoryManages.clear();
         noteListView = binding.categoriesListView;
+        currentUser = ((Session) this.getActivity().getApplication()).getSomeVariable();
+
 
         SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(getActivity());
         sqLiteManager.populateCategoryListArray();

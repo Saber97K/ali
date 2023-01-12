@@ -48,8 +48,8 @@ public class ReviewPage extends AppCompatActivity {
         int rating = (int) ratingBar.getRating();
         RatingManage ratingManage = new RatingManage(id ,user,currentUser,rating, desc);
         sqLiteManager.addRatingToDatabase(ratingManage);
-        finish();
         Intent intent = new Intent(this, Success.class);
+        finish();
         intent.putExtra("text" , text);
         startActivity(intent);
     }
