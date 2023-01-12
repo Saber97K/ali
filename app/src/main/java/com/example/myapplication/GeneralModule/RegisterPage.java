@@ -9,15 +9,23 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.ui.Utils.RatingManage;
 import com.example.myapplication.ui.Utils.UsersManage;
+import com.example.myapplication.ui.Utils.database.SQLiteManager;
 
 public class RegisterPage extends AppCompatActivity {
     private EditText nameEditText, emailEditText , passwordEditText;
     private static String role ;
+    private boolean existingEmail;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        UsersManage.UsersList.clear();
+        SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(this);
+        sqLiteManager.populateUserListArray();
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_page);
         Bundle bundle = getIntent().getExtras();
@@ -29,10 +37,15 @@ public class RegisterPage extends AppCompatActivity {
     }
 
     public void SignUp(View view) {
-
+        existingEmail = false;
         String name = String.valueOf(nameEditText.getText());
         String email = String.valueOf(emailEditText.getText());
         String password = String.valueOf(passwordEditText.getText());
+        for (int i = 0 ; i < UsersManage.UsersList.size();i++){
+            if(email.equals(UsersManage.UsersList.get(i).getEmail())){
+                existingEmail = true;
+            }
+        }
 
         if (name.isEmpty()){//check name is not empty
             Toast.makeText(this, "Name can't be empty", Toast.LENGTH_SHORT).show();
@@ -40,6 +53,10 @@ public class RegisterPage extends AppCompatActivity {
         else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             //check email is valid
             Toast.makeText(this, "Email invalid", Toast.LENGTH_SHORT).show();
+        }
+        else if(existingEmail){
+            //check email is valid
+            Toast.makeText(this, "Email exists, please login", Toast.LENGTH_SHORT).show();
         }
         else if(password.length() < 8){
             //check password is more than 8 char

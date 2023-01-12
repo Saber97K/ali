@@ -27,6 +27,7 @@ public class RegisterPage2 extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
     private String role,name,email,password ,phone , address, gender, date;
     private AppCompatRadioButton rbMale, rbFemale;
+    private int year1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +89,10 @@ public class RegisterPage2 extends AppCompatActivity {
         }
         else if(phone.isEmpty()){
             Toast.makeText(this, "Phone number can't be empty", Toast.LENGTH_SHORT).show();
+        }else if(phone.isEmpty()){
+            Toast.makeText(this, "Phone number can't be empty", Toast.LENGTH_SHORT).show();
+        }else if(year1 > 2004){
+            Toast.makeText(this, "You must be at least 18 years old", Toast.LENGTH_SHORT).show();
         }
 
         else {
@@ -106,10 +111,10 @@ public class RegisterPage2 extends AppCompatActivity {
 
         private String getTodaysDate() {
         Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR) - 18;
+        year1 = calendar.get(Calendar.YEAR) - 19;
         int month = calendar.get(Calendar.MONTH)+1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        return makeDateString(day,month,year);
+        return makeDateString(day,month,year1);
     }
 
 
@@ -118,6 +123,7 @@ public class RegisterPage2 extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
+                year1 = year;
                 String dateString = makeDateString(day, month,year);
                 dateButton.setText(dateString);
                 date = dateString;

@@ -50,7 +50,7 @@ public class Worker_intro extends Fragment implements OnItemClick {
         courseRV.setHasFixedSize(true);
         courseRV.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         loadRecyclerViewData();
-        if (cat_id == -1) {
+        if (cat_id == -1 || cat_id== 0) {
             setOrderAdapter();
         } else {
             setOrderAdapter2();
@@ -83,7 +83,7 @@ public class Worker_intro extends Fragment implements OnItemClick {
     private void loadFromDBToMemory() {
         SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(getActivity());
         sqLiteManager.populateOrderListArray();
-        sqLiteManager.populateCategoryListArray();
+        sqLiteManager.populateCategoryListArray2();
     }
 
     private void setOnClickListener() {
@@ -111,7 +111,7 @@ public class Worker_intro extends Fragment implements OnItemClick {
     public void onClick(String value) {
         cat_id = Integer.parseInt(value);
         loadRecyclerViewData();
-        if (cat_id == -1) {
+        if (cat_id == -1 || cat_id == 0) {
             setOrderAdapter();
         } else {
             setOrderAdapter2();

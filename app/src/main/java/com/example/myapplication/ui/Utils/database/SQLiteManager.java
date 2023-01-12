@@ -432,10 +432,26 @@ public class SQLiteManager extends SQLiteOpenHelper {
         }
     }
 
-    public void populateCategoryListArray() {
+    public void populateCategoryListArray2() {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
 
         try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + CATEGORY_TABLE_NAME, null)) {
+            if (result.getCount() != 0) {
+                while (result.moveToNext()) {
+                    int id = result.getInt(0);
+                    String name = result.getString(1);
+                    CategoryManage note = new CategoryManage(id, name);
+                    CategoryManage.categoryManages.add(note);
+                }
+            }
+        } catch (SQLiteException e) {
+            Log.e(TAG, "Error reading data to database", e);
+        }
+    }
+    public void populateCategoryListArray() {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + CATEGORY_TABLE_NAME + " WHERE " + CATEGORY_ID + "!=" + 0, null)) {
             if (result.getCount() != 0) {
                 while (result.moveToNext()) {
                     int id = result.getInt(0);

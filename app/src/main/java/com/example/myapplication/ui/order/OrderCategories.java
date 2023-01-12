@@ -53,14 +53,15 @@ public class OrderCategories extends Fragment {
     }
     private void ToDBInitialSettings() {
         SQLiteManager sqLiteManager = SQLiteManager.instanceOfDatabase(getActivity());
-        CategoryManage categoryManage1 = new CategoryManage(0,"Dispatcher");
-        CategoryManage categoryManage2 = new CategoryManage(1,"Data Entry");
-        CategoryManage categoryManage3 = new CategoryManage(2,"Promoter");
-        CategoryManage categoryManage4 = new CategoryManage(3,"Cook Helper");
-        CategoryManage categoryManage5 = new CategoryManage(4,"Entertainment");
-        CategoryManage categoryManage6 = new CategoryManage(5,"Sports");
-        CategoryManage categoryManage7 = new CategoryManage(6,"Others");
-
+        CategoryManage categoryManage = new CategoryManage(0,"All");
+        CategoryManage categoryManage1 = new CategoryManage(1,"Dispatcher");
+        CategoryManage categoryManage2 = new CategoryManage(2,"Data Entry");
+        CategoryManage categoryManage3 = new CategoryManage(3,"Promoter");
+        CategoryManage categoryManage4 = new CategoryManage(4,"Cook Helper");
+        CategoryManage categoryManage5 = new CategoryManage(5,"Entertainment");
+        CategoryManage categoryManage6 = new CategoryManage(6,"Sports");
+        CategoryManage categoryManage7 = new CategoryManage(7,"Others");
+        sqLiteManager.addCategoryToDatabase(categoryManage);
         sqLiteManager.addCategoryToDatabase(categoryManage1);
         sqLiteManager.addCategoryToDatabase(categoryManage2);
         sqLiteManager.addCategoryToDatabase(categoryManage3);
