@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.record.RecordFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -17,87 +18,79 @@
         android:theme="?actionBarTheme">
 
         <TextView
-            android:id="@+id/nn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="DeS"
-            android:textColor="@color/red"
-            android:textSize="35sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/nn2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Tiny"
+            android:text="Record"
             android:textColor="@color/black"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
-
 
     </androidx.appcompat.widget.Toolbar>
 
-    <RadioGroup
 
+    <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="30dp"
         android:orientation="horizontal"
+
         >
         <androidx.appcompat.widget.AppCompatRadioButton
+
             android:id="@+id/ongoingRadio"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:minHeight="30dp"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:text="Ongoing"
-
             android:gravity="center"
             android:checked="true"
             android:button="@android:color/transparent"
-            android:layout_weight="1"
             android:background="@drawable/button_selector"
             android:onClick="rdButton1"
+            android:layout_marginEnd="10dp"
             />
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/completedRadio"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:minHeight="30dp"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:text="Completed"
-
             android:gravity="center"
             android:button="@android:color/transparent"
             android:layout_weight="1"
             android:background="@drawable/button_selector"
             android:onClick="rdButton2"
+            android:layout_marginEnd="10dp"
             />
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/cancelledRadio"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:minHeight="30dp"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:text="Cancelled"
-
             android:gravity="center"
             android:button="@android:color/transparent"
             android:layout_weight="1"
             android:background="@drawable/button_selector"
             android:onClick="rdButton3"
+            android:layout_marginEnd="10dp"
             />
     </RadioGroup>
     <ListView
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:id="@+id/orderListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="15dp"
-        android:divider="@color/darkGrey"
+        android:divider="@color/black"
         android:dividerHeight="3dp" />
 
 

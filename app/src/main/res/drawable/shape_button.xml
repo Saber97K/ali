@@ -2,13 +2,11 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item  android:state_pressed="true">
         <shape android:shape="rectangle">
-            <!-- 圆角的度数-->
             <corners android:radius="5dp" />
-            <!-- 设置按钮中的文字与边框的距离-->
             <padding android:bottom="10dp" android:left="20dp" android:right="20dp" android:top="10dp" />
-            <!-- 背景色-->
+
             <solid android:color="@color/dark_pink" />
-            <!-- 边框色-->
+
             <stroke android:width="3dp" android:color="#000000" />
         </shape>>
     </item>

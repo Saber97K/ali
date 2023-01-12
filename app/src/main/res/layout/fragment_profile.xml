@@ -1,220 +1,307 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        android:clickable="true"
-        android:focusable="true"
         tools:context=".ui.profile.ProfileFragment"
-        android:id="@+id/con">
+        android:id="@+id/con"
+    android:orientation="vertical">
 
-
-        <TextView
-            android:id="@+id/DOB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="12dp"
-            android:hint="DD/MM/YY"
-            android:textColorHint="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DOB_Title"
-            android:onClick="TakeDate"/>
-
-        <TextView
-            android:id="@+id/Location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="12dp"
-            android:hint="Location"
-            android:textColorHint="@color/black"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Location_Title"
-            android:onClick="takeLoc"/>
-        <TextView
-            android:id="@+id/Phone_Number_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="13dp"
-            android:hint="Phone Number"
-            android:textColorHint="@color/black"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/PhoneNo_Title" />
-
-    <TextView
-        android:id="@+id/Name"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="68dp"
-
-        android:hint="User Name"
-        android:textColorHint="@color/black"
-
-        android:minHeight="40dp"
-
-        android:text=""
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Profile_Pic"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_conversion_absoluteHeight="0dp"
-        tools:layout_conversion_absoluteWidth="0dp" />
-
-    <TextView
-            android:id="@+id/Info_Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="192dp"
-            android:text="Basic Information"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.338"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_conversion_absoluteHeight="0dp"
-            tools:layout_conversion_absoluteWidth="0dp" />
-
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/Profile_Pic"
-        android:layout_width="116dp"
-        android:layout_height="113dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.244"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@color/bright_pink"
+        android:minHeight="?actionBarSize"
+        android:elevation="10dp"
+        android:theme="?actionBarTheme">
 
         <TextView
-            android:id="@+id/DOB_Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="40dp"
-            android:text="Date of Birth"
+            android:layout_gravity="center"
+            android:text="Profile"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Info_Title" />
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/Location_Title"
-            android:layout_width="wrap_content"
+    </androidx.appcompat.widget.Toolbar>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="5dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="25dp"
-            android:text="Location"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DOB" />
+            android:layout_weight="1">
+            <de.hdodenhof.circleimageview.CircleImageView
+                app:civ_border_width="4dp"
+                app:civ_border_color="@color/bright_pink"
+                android:id="@+id/Profile_Pic"
+                android:layout_width="82dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/PhoneNo_Title"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="25dp"
-            android:text="Phone Number"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Location" />
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:padding="20dp">
 
-    <TextView
-        android:id="@+id/Sound_Notif"
-        android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="User Name"
+                android:textColorHint="@color/black"
+                android:minHeight="40dp"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:gravity="right"
+                    android:background="@drawable/star"
+                    android:layout_marginStart="20dp"/>
+
+                <TextView
+                    android:id="@+id/RatingEDIT"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="Number"
+                    android:textSize="15sp"
+                    android:textColorHint="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="392dp"
-        android:text="Sound Notification"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Name" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/Shake_Screen"
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:gravity="right"
+                android:background="@drawable/profile"
+                android:layout_marginStart="20dp"/>
+            <TextView
+                android:id="@+id/Info_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Basic Information"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="italic|bold"
+                android:layout_marginStart="15dp"/>
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="15dp"
+            android:rowCount="3"
+            android:columnCount="2">
+            <TextView
+                android:id="@+id/DOB_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date of Birth"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginBottom="15dp"/>
+            <TextView
+                android:id="@+id/DOB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="DD/MM/YY"
+                android:textColorHint="@color/black"
+                android:onClick="TakeDate"
+                android:textColor="@color/black"
+                android:layout_marginStart="70dp"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/Location_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:id="@+id/Location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Location"
+                android:textColorHint="@color/black"
+                android:onClick="takeLoc"
+                android:layout_marginStart="70dp"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/PhoneNo_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/Phone_Number_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:textColorHint="@color/black"
+                android:layout_marginStart="70dp"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+        </GridLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:gravity="right"
+                android:background="@drawable/setting"
+                android:layout_marginStart="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Setting"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="italic|bold"
+                android:layout_marginStart="15dp"/>
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:rowCount="2"
+            android:columnCount="2"
+            android:layout_marginStart="70dp">
+            <TextView
+                android:id="@+id/Sound_Notif"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sound Notification"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <Switch
+                android:id="@+id/Sound_Notif_Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:layout_marginStart="45dp"/>
+
+            <TextView
+                android:id="@+id/Shake_Screen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shake to Screenshot"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+            <Switch
+                android:id="@+id/Shake_Screen_Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:layout_marginStart="45dp"
+                />
+        </GridLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="440dp"
-        android:text="Shake to Screenshot"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Name" />
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
 
-    <TextView
-        android:id="@+id/RatingEDIT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="118dp"
-        android:text="Number"
-        android:textColorHint="@color/black"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Name" />
-
-    <Button
+        <Button
             android:id="@+id/LogoutBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="30dp"
-            android:backgroundTint="#FDD184"
-            android:text="Logout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="66dp"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/DelAcc"
-            app:layout_constraintStart_toStartOf="parent"
-            android:onClick="LogOut"/>
+            android:backgroundTint="#FDD184"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            app:cornerRadius="20dp"
+            android:text="Logout"
+            android:onClick="LogOut"
+            android:layout_marginEnd="30dp"/>
 
         <Button
             android:id="@+id/DelAcc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="55dp"
-            android:layout_marginBottom="30dp"
-            android:backgroundTint="#FF2600"
-            android:text="Delete Account"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="66dp"
+            android:backgroundTint="#FF8247"
+            android:text="Delete"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:onClick="DeleteProfile"/>
+            android:onClick="DeleteProfile"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            app:cornerRadius="20dp"/>
 
-        <Switch
-            android:id="@+id/Sound_Notif_Switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="380dp"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            app:layout_constraintStart_toEndOf="@+id/Sound_Notif"
-            app:layout_constraintTop_toBottomOf="@+id/Name" />
-    <Switch
-        android:id="@+id/Shake_Screen_Switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="428dp"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toEndOf="@+id/Shake_Screen"
-        app:layout_constraintTop_toBottomOf="@+id/Name" />
+
+    </LinearLayout>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+
+
+
+</LinearLayout>
