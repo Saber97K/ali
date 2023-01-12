@@ -173,6 +173,10 @@ public class OrderCreate extends AppCompatActivity {
         }else {
             String desc = String.valueOf(descEditText.getText());
             String title = String.valueOf(titleEditText.getText());
+            if(desc.isEmpty() || title.isEmpty()){
+                Toast.makeText(this, "Title & Description must be filled", Toast.LENGTH_SHORT).show();
+            }
+
             try {
                 price = Double.parseDouble(String.valueOf(priceEditText.getText()));
             } catch (NumberFormatException e) {
