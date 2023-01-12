@@ -24,6 +24,7 @@ public class resetPassword extends AppCompatActivity {
     private ManageWallet manageWallet;
     private ManageVisited manageVisited;
     private SQLiteManager sqLiteManager;
+    private UsersManage usersManage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,8 @@ public class resetPassword extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
 
         email = bundle.getString("email");
-        otp = bundle.getString("otp");
+        otp = bundle.getString("OTP");
+        loadFromDBToMemory();
 
         PasswordEditText = findViewById(R.id.editTextTextPassword2);
         RetypePasswordEditText = findViewById(R.id.editTextTextPassword3);
@@ -40,6 +42,7 @@ public class resetPassword extends AppCompatActivity {
     }
     private void loadFromDBToMemory() {
         sqLiteManager = SQLiteManager.instanceOfDatabase(this);
+        UsersManage.UsersList.clear();
         sqLiteManager.populateUserListArray();
         sqLiteManager.populateOrderListArray();
         sqLiteManager.populateWalletArray();
@@ -51,21 +54,25 @@ public class resetPassword extends AppCompatActivity {
         retypepassword = String.valueOf(RetypePasswordEditText.getText());
 
         //check if they are the same
-        Intent Main;
-        if(password.equals(retypepassword)) {//same
+        if(password.length() < 8){
+            //check password is more than 8 char
+            Toast.makeText(this, "Password must have min 8 characters", Toast.LENGTH_SHORT).show();
+        }
+        else if(password.equals(retypepassword)) {//same
             Toast.makeText(this, "Password changed successfully", Toast.LENGTH_SHORT).show();
             //update new password in database
-            loadFromDBToMemory();
-            UsersManage usertoupdatepassword = null;
             for (UsersManage note : UsersManage.UsersList) {
                 if ((note.getEmail().equals(email) && (note.getOtp().equals(otp)))) {//correct otp
+
                     note.setPassword(password); //password in this case is the new password
-                    usertoupdatepassword = note;
+                    usersManage = note;// you can see the alt + tab, it's in the 1st monitor, change monitor to alt tab
                     break;
                 }
             }
-            sqLiteManager.UpdateUser(usertoupdatepassword);
-            Main = new Intent(this, LoginPage.class);
+            sqLiteManager.UpdateUser(usersManage);
+            Intent Main = new Intent(this, LoginPage.class);
+            finish();
+            startActivity(Main);
         }
         else{//not same
             Toast.makeText(this, "Password doesn't match", Toast.LENGTH_SHORT).show();
