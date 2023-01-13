@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if (shake) {
             sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
         } else {
-            Toast.makeText(getApplicationContext(), "Shake is disabled", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "Shake is disabled", Toast.LENGTH_SHORT).show();
         }
     }
     // take screenshot of current activity and save to gallary

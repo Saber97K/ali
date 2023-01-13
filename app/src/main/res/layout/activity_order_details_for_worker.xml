@@ -170,6 +170,7 @@
         android:textSize="20sp"
         android:textStyle="bold|italic"
         app:cornerRadius="20dp"
+        android:onClick="Accept"
         />
 
 
