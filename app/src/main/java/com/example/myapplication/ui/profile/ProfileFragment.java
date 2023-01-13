@@ -1,14 +1,21 @@
 package com.example.myapplication.ui.profile;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -33,6 +40,11 @@ public class ProfileFragment extends Fragment {
     private  float ratingValue;
     private UsersManage userProfile;
     private static final DecimalFormat df = new DecimalFormat("0.0");
+    Switch shakeToggle;
+
+    private SharedPreferences prefs;
+    private boolean shakeToScreenshot;
+    private SharedPreferences.Editor editor;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -53,34 +65,52 @@ public class ProfileFragment extends Fragment {
         imageView.setImageBitmap(userProfile.getImage());
         Log.d("TAG", String.valueOf(currentUser));
 
+        prefs = getActivity().getSharedPreferences("myPrefs", MODE_PRIVATE);
+
+        shakeToggle = root.findViewById(R.id.Shake_Screen_Switch);
+        shakeToScreenshot = prefs.getBoolean("shake", false);
+        shakeToggle.setChecked(shakeToScreenshot);
+        shakeToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            shakeToScreenshot = isChecked;
+            editor = prefs.edit();
+            editor.putBoolean("shake", isChecked);
+            editor.apply();
+            Toast.makeText(getActivity(), "Shake to screenshot is " + (isChecked ? "on" : "off"), Toast.LENGTH_SHORT).show();
+        });
+//        shakeToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//            shakeToScreenshot = isChecked;
+//            editor.putBoolean("shake", true);
+//            editor.apply();
+//        });
+
 
         Button btnOut = (Button) root.findViewById(R.id.LogoutBtn);
         btnOut.setOnClickListener(new View.OnClickListener() {
-                                       @Override
-                                       public void onClick(View view) {
-                                           Intent intent = new Intent(getActivity(), MainLobby.class);
-                                           ((Session) getActivity().getApplication()).setSomeVariable(-1);
-                                           ((Session) getActivity().getApplication()).setChoice(0);
-                                           UsersManage.UsersList.clear();
-                                           getActivity().finish();
-                                           startActivity(intent);
-                                       }
-                                   }
+                                      @Override
+                                      public void onClick(View view) {
+                                          Intent intent = new Intent(getActivity(), MainLobby.class);
+                                          ((Session) getActivity().getApplication()).setSomeVariable(-1);
+                                          ((Session) getActivity().getApplication()).setChoice(0);
+                                          UsersManage.UsersList.clear();
+                                          getActivity().finish();
+                                          startActivity(intent);
+                                      }
+                                  }
         );
 
         Button btnDeleteUser = (Button) root.findViewById(R.id.DelAcc);
         btnDeleteUser.setOnClickListener(new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View view) {
-                                          Intent intent = new Intent(getActivity(), MainLobby.class);
-                                          getActivity().finish();
-                                          deleteUserFromDB();
-                                          ((Session) getActivity().getApplication()).setSomeVariable(-1);
-                                          ((Session) getActivity().getApplication()).setChoice(0);
-                                          UsersManage.UsersList.clear();
-                                          startActivity(intent);
-                                      }
-                                  }
+                                             @Override
+                                             public void onClick(View view) {
+                                                 Intent intent = new Intent(getActivity(), MainLobby.class);
+                                                 getActivity().finish();
+                                                 deleteUserFromDB();
+                                                 ((Session) getActivity().getApplication()).setSomeVariable(-1);
+                                                 ((Session) getActivity().getApplication()).setChoice(0);
+                                                 UsersManage.UsersList.clear();
+                                                 startActivity(intent);
+                                             }
+                                         }
         );
 
         return root;
@@ -97,7 +127,7 @@ public class ProfileFragment extends Fragment {
         }
         if(counts != 0) {
             ratingValue = ratingValue / counts;
-             return df.format(ratingValue);
+            return df.format(ratingValue);
         }else
         {
             return df.format(ratingValue);
