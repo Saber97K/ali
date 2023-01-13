@@ -70,7 +70,7 @@ public class MainActivity3 extends AppCompatActivity implements SensorEventListe
         // If the acceleration in any dimension exceeds the threshold, consider it a shake
         if (Math.abs(x) > threshold || Math.abs(y) > threshold || Math.abs(z) > threshold) {
             // Run your desired method
-            //Toast.makeText(getApplicationContext(), "Shake detected", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Shake detected", Toast.LENGTH_SHORT).show();
             // take screenshot of view
             View rootView = getWindow().getDecorView().findViewById(android.R.id.content);
 
