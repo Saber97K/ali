@@ -98,21 +98,11 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:text="type"
+            android:layout_marginTop="5dp"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="23sp"
             android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/cellOrderPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:maxLines="1"
-            android:text="price"
-            android:textColor="@color/orange"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 </LinearLayout>
 
@@ -154,12 +144,31 @@
         android:layout_marginBottom="22dp"
         android:textSize="21sp"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="200dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/money"/>
 
 
+        <TextView
+            android:id="@+id/cellOrderPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="7dp"
+            android:maxLines="1"
+            android:text="price"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-
-
-
+    </LinearLayout>
 
 
 
