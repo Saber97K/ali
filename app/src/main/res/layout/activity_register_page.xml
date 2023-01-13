@@ -134,14 +134,15 @@
             android:layout_width="154dp"
             android:layout_height="66dp"
             android:backgroundTint="#FDD184"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            app:cornerRadius="20dp"
             android:fontFamily="sans-serif"
             android:onClick="SignUp"
             android:text="Sign Up"
             android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold|italic"
-            app:cornerRadius="20dp" />
+            />
 
     </LinearLayout>
 
