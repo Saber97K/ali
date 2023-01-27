@@ -1,45 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:padding="15dp"
-    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/UserIdCell"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:text="UserId"
-        
-        android:textColor="@color/darkGrey"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/UserEmailCell"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:text="type"
-        android:textColor="@color/darkGrey"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/UserRatingCell"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="rating"
-        android:textStyle="bold"
-        android:maxLines="1"
-        android:textColor="@color/darkGrey"
-        android:textSize="25sp"
-        />
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:id="@+id/ImageOfUser"
+        android:layout_marginEnd="20dp"
         />
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/UserIdCell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="UserId"
+                android:textColor="@color/darkGrey"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/UserRatingCell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="rating"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:textColor="@color/darkGrey"
+                android:textSize="18sp"
+                />
+
+
+
+        <TextView
+            android:id="@+id/UserEmailCell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="email"
+            android:textColor="@color/darkGrey"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+
+
+
 
 </LinearLayout>

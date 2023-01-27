@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.order;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,11 +36,13 @@ public class WorkerIntro2 extends Fragment {
     private SQLiteManager sqLiteManager;
     private UsersManage usersManage,usersManage1;
     private ImageView imageView;
+    private ImageButton phone;
 
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         binding = WorkerIntro2Binding.inflate(inflater, container, false);
         root = binding.getRoot();
         currentUser = ((Session) getActivity().getApplication()).getSomeVariable();
@@ -70,19 +74,33 @@ public class WorkerIntro2 extends Fragment {
             }
         }
 
-
-
-
         Button cancel = (Button) root.findViewById(R.id.button50);
         cancel.setOnClickListener(new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View view) {
+                                          Intent intent = new Intent(getActivity(), MainActivity3_wallet.class);
+                                          ordersManage.setAccepted_user_id(-1);
+                                          usersManage.setActiveOrder(-1);
+                                          sqLiteManager.UpdateUser(usersManage);
+                                          sqLiteManager.UpdateOrder(ordersManage);
+                                          getActivity().finish();
+                                          startActivity(intent);
+                                      }
+                                  }
+        );
+
+
+
+
+        phone = root.findViewById(R.id.imageView7);
+        phone.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        Intent intent = new Intent(getActivity(), MainActivity3_wallet.class);
-                                        ordersManage.setAccepted_user_id(-1);
-                                        usersManage.setActiveOrder(-1);
-                                        sqLiteManager.UpdateUser(usersManage);
-                                        sqLiteManager.UpdateOrder(ordersManage);
-                                        getActivity().finish();
+                                        String phone_number="0102799110";
+                                        Intent intent = new Intent();
+                                        intent.setAction(intent.ACTION_DIAL);
+                                        Uri uri=Uri.parse("tel:"+phone_number);
+                                        intent.setData(uri);
                                         startActivity(intent);
                                     }
                                 }

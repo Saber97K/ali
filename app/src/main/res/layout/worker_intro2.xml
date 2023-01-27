@@ -168,18 +168,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:paddingTop="10dp"
+        android:paddingTop="5dp"
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="10dp">
-        <!--i push? and re download?-->
-
-    </TextView>
+    <ImageButton
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:layout_gravity="center_horizontal"
+        android:paddingBottom="20dp"
+        app:srcCompat="@android:drawable/ic_menu_call" />
 
     <androidx.appcompat.widget.AppCompatButton
+
 
         android:id="@+id/button50"
         android:layout_width="130dp"
