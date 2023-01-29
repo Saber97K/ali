@@ -26,6 +26,7 @@ import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
 
 public class LoginPage extends AppCompatActivity {
+
     private EditText emailText, passwordText;
     private OrdersManage ordersManage;
     private ManageWallet manageWallet;
@@ -53,9 +54,11 @@ public class LoginPage extends AppCompatActivity {
         sqLiteManager.populateOrderListArray();
         sqLiteManager.populateWalletArray();
         sqLiteManager.populateVisitsListArray();
-    }
+    } //Load the data from database to memory, to check if the email and password are correct
+
     public void EnterTheSystem(View view) {
         loadFromDBToMemory();
+
         String email1 = String.valueOf(emailText.getText());
         String password1 = String.valueOf(passwordText.getText());
 
@@ -66,6 +69,7 @@ public class LoginPage extends AppCompatActivity {
         else {
             //correct email format
             for (UsersManage note : UsersManage.UsersList) {
+
                 if ((note.getEmail().equals(email1) && (note.getPassword().equals(password1)))) {//correct password
                     wrongPassword = false;
                     Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();

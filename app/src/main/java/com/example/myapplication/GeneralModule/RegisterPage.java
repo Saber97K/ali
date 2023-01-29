@@ -14,6 +14,7 @@ import com.example.myapplication.ui.Utils.UsersManage;
 import com.example.myapplication.ui.Utils.database.SQLiteManager;
 
 public class RegisterPage extends AppCompatActivity {
+
     private EditText nameEditText, emailEditText , passwordEditText;
     private static String role ;
     private boolean existingEmail;
@@ -41,6 +42,8 @@ public class RegisterPage extends AppCompatActivity {
         String name = String.valueOf(nameEditText.getText());
         String email = String.valueOf(emailEditText.getText());
         String password = String.valueOf(passwordEditText.getText());
+
+        //Check if the email is existed in database
         for (int i = 0 ; i < UsersManage.UsersList.size();i++){
             if(email.equals(UsersManage.UsersList.get(i).getEmail())){
                 existingEmail = true;
@@ -62,7 +65,7 @@ public class RegisterPage extends AppCompatActivity {
             //check password is more than 8 char
             Toast.makeText(this, "Password must have min 8 characters", Toast.LENGTH_SHORT).show();
         }
-        else {
+        else { //Create the data into the database
             Intent first = new Intent(this, RegisterPage2.class);
             first.putExtra("role", role);
             first.putExtra("name", name);

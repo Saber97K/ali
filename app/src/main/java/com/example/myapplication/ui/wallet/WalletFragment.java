@@ -42,8 +42,8 @@ public class WalletFragment extends Fragment {
             }
         }
 
-            Button btn2 = (Button) view1.findViewById(R.id.clickAddBankAcount);
-            btn2.setOnClickListener(new View.OnClickListener() {
+            Button addBankAccount = (Button) view1.findViewById(R.id.clickAddBankAcount);
+            addBankAccount.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(getActivity(), WalletAddingActivity.class);

@@ -60,6 +60,7 @@ public class WithdrawProcess extends AppCompatActivity {
         }
 
     }
+
     public void button11btn(View view) {
         WithdrawOn.setText("10");
 
@@ -76,7 +77,6 @@ public class WithdrawProcess extends AppCompatActivity {
     public void button51btn(View view) {
         WithdrawOn.setText("200");
     }
-
     public void button61btn(View view) {
         WithdrawOn.setText("500");
     }

@@ -72,9 +72,12 @@ public class WalletAddingActivity extends AppCompatActivity {
 
     public void ConfirmBank(View view) {
 
+        //Change the bank and password to string for storing purpose
         String bank2 = String.valueOf(bank.getText());
         String pass2 = String.valueOf(pass.getText());
         int id = ManageWallet.WalletList.size();
+
+        //Create a wallet bank account
         manageWallet = new ManageWallet(id, bank2 , currentUser, 0 , pass2);
         sqLiteManager.addWallet(manageWallet);
         Intent intent;
