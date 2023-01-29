@@ -99,7 +99,7 @@
             android:id="@+id/textView36"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12/12/2022"
+            android:text="12/4/2023"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -150,40 +150,42 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="@color/black">
+        android:background="@color/black"
+        android:layout_marginBottom="20dp">
 
     </TextView>
 
-    <TextView
-        android:id="@+id/textView39"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingTop="10dp"
-        android:text="Please contact the customer"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/textViewPhoneNumber1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingTop="5dp"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+        <TextView
+            android:id="@+id/textView39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Please contact the customer"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/imageView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:layout_gravity="center_horizontal"
-        android:paddingBottom="20dp"
-        app:srcCompat="@android:drawable/ic_menu_call" />
+        <TextView
+            android:id="@+id/textViewPhoneNumber1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/imageView7"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/phone" />
+
+    </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-
-
         android:id="@+id/button50"
         android:layout_width="130dp"
         android:layout_height="66dp"
@@ -194,6 +196,7 @@
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold|italic"
+        android:layout_marginTop="10dp"
         app:cornerRadius="20dp" />
 
 </LinearLayout>
